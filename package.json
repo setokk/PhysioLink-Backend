@@ -1,0 +1,14 @@
+{
+  "name": "physiolink-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "debug": "~2.6.9",
+    "express": "^4.18.2",
+    "mariadb": "^3.1.1",
+    "morgan": "~1.9.1"
+  }
+}
