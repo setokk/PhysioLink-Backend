@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Αίτημα Ραντεβού</title>
+</head>
+<body style="color: white;
+             font-family: 'Manrope', sans-serif;">
+    <div style="background-color: #0DAB8B;">
+        <hr>
+        <br>
+        <div style = "justify-content: center; 
+                      text-align: center;">
+            <img src="cid:logo" alt="PhysioLink Logo" width="100px" height="100px;" style="padding-bottom: -10px;"/>
+            <h2 style="padding-bottom: 10px;">PhysioLink Service</h2>
+            <h1>Μόλις λάβατε νέο αίτημα ραντεβού για τις {{date}}, ώρα {{hour}}</h1> 
+            <br>
+            <hr>
+            <h2>Στοιχεία Ασθενή:</h2>
+        </div>
+        <ul style="list-style: none; font-size: 1.1rem;">
+            <li><b>Όνομα: </b>{{name}}</li>
+            <li><b>Επίθετο: </b>{{surname}}</li>
+            <li><b>Κινητό Τηλέφωνο: </b>{{phoneNumber}}</li>
+            <li><b>Πρόβλημα: </b>{{message}}</li>
+        </ul>
+        <br>
+        <hr>
+    </div>
+</body>
+</html>
