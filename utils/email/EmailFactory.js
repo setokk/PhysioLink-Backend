@@ -55,8 +55,8 @@ class EmailFactory
             name: doctor.name,
             surname: doctor.surname,
             phoneNumber: doctor.phoneNumber,
-            reason: doctor.reason,
-            date: doctor.date
+            date: doctor.date,
+            reason: doctor.reason
         };
         const htmlToSend = template(replacements);
 
@@ -115,14 +115,3 @@ class EmailFactory
         });
     }
 }
-
-const doctorEmail = "tesmtracks@gmail.com";
-const patient = {
-    name: "Kwstas",
-    surname: "Ok",
-    phoneNumber: "6937324567",
-    date: "12/07/2023",
-    hour: "16:15",
-    message: "Ponaei o laimos moy bohtheia"
-};
-EmailFactory.sendRequestEmail(doctorEmail, patient);

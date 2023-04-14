@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 /* Dependencies */
 let express = require('express');
@@ -7,6 +7,7 @@ let logger = require('morgan');
 
 /* Router initialization */
 let indexRouter = require('./routes/index');
+let authRouter = require('./routes/auth');
 
 let app = express();
 
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /* Routes */
 app.use('/physiolink/api', indexRouter);
+app.use('/physiolink/api/auth')
 
 
 module.exports = app;
