@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /* Routes */
 app.use('/physiolink/api', indexRouter);
-app.use('/physiolink/api/auth')
+app.use('/physiolink/api/auth', authRouter);
 
 
 module.exports = app;
