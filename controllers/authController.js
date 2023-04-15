@@ -23,8 +23,6 @@ exports.log_in = async (req, res) =>
         const user = await driver.executeQuery(userQuery);
         if (role == 'doctor')
         {
-            console.log(user);
-            console.log(id);
             res.json({ id: id,
                 username: username,
                 role: role,
