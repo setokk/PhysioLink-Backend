@@ -17,8 +17,19 @@ exports.create_doctor = async (req, res) =>
     const phoneNumber = req.body.phone_number;
     const afm = req.body.afm;
 
+    /* Insert into 'user' table */
     const query = `INSERT INTO physiolink.user (username, password, role) VALUES ('${username}', '${password}', 'doctor');`;
     await driver.executeQuery(query);
+
+    /* Get AUTO_INCREMENTED id */
+    const idQuery = `SELECT id FROM physiolink.user WHERE user.username = '${username}'`;
+    const id = await driver.executeQuery(idQuery);
+
+    /* Insert the doctor user into 'doctor' table aswell */
+    const docQuery = `INSERT INTO physiolink.doctor (id, name, surname, email, phone_number, afm) VALUES ` +
+                     `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${afm}')`;
+    await driver.executeQuery(docQuery);
+
     res.end();
 }
 
