@@ -1,9 +1,52 @@
 'use strict';
 
-const bcrypt = require('bcrypt');
+const driver = require('../utils/db/DatabaseDriver');
 
-exports.log_in = (req, res) =>
+exports.log_in = async (req, res) =>
 {
-    res.json({ id: 1, role: 'doctor', name: 'please', surname: 'work', email: 'test@gmail.com', phone_number: '6945345678', afm: '231314155'});
+    const username = req.body.username;
+    const password = req.body.password;
+
+    const query = `SELECT * FROM physiolink.user WHERE user.username = '${username}' AND user.password = '${password}'`;
+    const result = await driver.executeQuery(query);
+    
+    if (result.length == 0) // Didn't find a match
+    {
+        res.json({ message: 'Invalid credentials' });
+    }
+    else
+    {
+        const role = result[0].role;
+        const id = result[0].id;
+
+        const userQuery = `SELECT * FROM physiolink.${role} WHERE ${role}.id = ${id};`;
+        const user = await driver.executeQuery(userQuery);
+        if (role == 'doctor')
+        {
+            console.log(user);
+            console.log(id);
+            res.json({ id: id,
+                username: username,
+                role: role,
+                name: user[0].name,
+                surname: user[0].surname,
+                email: user[0].email,
+                phone_number: user[0].phone_number,
+                afm: user[0].afm });
+        }
+        else if (role == 'patient')
+        {
+            res.json({ id: id,
+                username: username,
+                role: role,
+                name: user[0].name,
+                surname: user[0].surname,
+                email: user[0].email,
+                phone_number: user[0].phone_number,
+                amka: user[0].amka });
+        }
+    }
+
+    res.end();   
 }
 
