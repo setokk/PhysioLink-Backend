@@ -10,8 +10,11 @@ let indexRouter = require('./routes/index');
 let authRouter = require('./routes/auth');
 let doctorRouter = require('./routes/doctor/doctor');
 let patientRouter = require('./routes/patient/patient');
+const EmailFactory = require('./utils/email/EmailFactory');
 
+/* Local dependencies */
 require('./utils/db/DatabaseDriver');
+EmailFactory.getInstance();
 
 let app = express();
 

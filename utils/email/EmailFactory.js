@@ -5,15 +5,44 @@ const handlebars = require('handlebars');
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * This class is used for sending template emails.
+ * It uses the singleton pattern.
+ */
 class EmailFactory 
 {
-    static async sendRequestEmail(toDoctor, patient)
+    static emailFactory;
+
+    #requestHtml;
+    #declinedHtml;
+    #acceptedHtml;
+
+    constructor() 
     {
-        const filePath = path.join(__dirname, '../email/templates/new_request.html');
-        const source = fs.readFileSync(filePath, 'utf-8').toString();
+        const requestHtmlPath = path.join(__dirname, '../email/templates/new_request.html');
+        this.requestHtml = fs.readFileSync(requestHtmlPath, 'utf-8').toString();      
+
+        const declinedHtmlPath = path.join(__dirname, '../email/templates/request_declined.html');
+        this.declinedHtml = fs.readFileSync(declinedHtmlPath, 'utf-8').toString();
+
+        const acceptedHtmlPath = path.join(__dirname, '../email/templates/request_accepted.html');
+        this.acceptedHtml = fs.readFileSync(acceptedHtmlPath, 'utf-8').toString();
+    }
+
+    static getInstance()
+    {
+        if (this.emailFactory === undefined)
+            this.emailFactory = new EmailFactory();
+            
+        return this.emailFactory;
+    }
+
+
+    async sendRequestEmail(toDoctor, patient)
+    {
         const logoPath = path.join(__dirname, '../email/templates/icons/logo.png');
 
-        const template = handlebars.compile(source);
+        const template = handlebars.compile(this.requestHtml);
         const replacements = {
             name: patient.name,
             surname: patient.surname,
@@ -44,13 +73,11 @@ class EmailFactory
         });
     }
 
-    static async sendDeclinedRequestEmail(toPatient, doctor)
+    async sendDeclinedRequestEmail(toPatient, doctor)
     {
-        const filePath = path.join(__dirname, '../email/templates/request_declined.html');
-        const source = fs.readFileSync(filePath, 'utf-8').toString();
         const logoPath = path.join(__dirname, '../email/templates/icons/logo.png');
 
-        const template = handlebars.compile(source);
+        const template = handlebars.compile(this.declinedHtml);
         const replacements = {
             name: doctor.name,
             surname: doctor.surname,
@@ -80,13 +107,11 @@ class EmailFactory
         });
     }
 
-    static async sendAcceptedRequestEmail(toPatient, doctor)
+    async sendAcceptedRequestEmail(toPatient, doctor)
     {
-        const filePath = path.join(__dirname, '../email/templates/request_accepted.html');
-        const source = fs.readFileSync(filePath, 'utf-8').toString();
         const logoPath = path.join(__dirname, '../email/templates/icons/logo.png');
 
-        const template = handlebars.compile(source);
+        const template = handlebars.compile(this.acceptedHtml);
         const replacements = {
             name: doctor.name,
             surname: doctor.surname,
@@ -115,3 +140,5 @@ class EmailFactory
         });
     }
 }
+
+module.exports = EmailFactory;
