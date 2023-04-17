@@ -21,7 +21,7 @@ require('./utils/db/DatabaseDriver');
 const EmailFactory = require('./utils/email/EmailFactory');
 EmailFactory.getInstance(); // Load fields from constructor
 
-
+/* App */
 let app = express();
 
 app.use(logger('dev'));
@@ -38,6 +38,5 @@ app.use('/physiolink/api/patient', patientRouter);
 app.use('/physiolink/api/patients', patientsRouter);
 app.use('/physiolink/api/provision', provisionRouter);
 app.use('/physiolink/api/provisions', provisionsRouter);
-
 
 module.exports = app;
