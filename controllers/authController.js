@@ -30,7 +30,9 @@ exports.log_in = async (req, res) =>
                 surname: user[0].surname,
                 email: user[0].email,
                 phone_number: user[0].phone_number,
-                afm: user[0].afm });
+                afm: user[0].afm,
+                address: user[0].address,
+                physio_name: user[0].physio_name });
         }
         else if (role == 'patient')
         {
@@ -44,7 +46,5 @@ exports.log_in = async (req, res) =>
                 amka: user[0].amka });
         }
     }
-
-    res.end();   
 }
 
