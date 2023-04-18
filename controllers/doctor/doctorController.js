@@ -16,6 +16,8 @@ exports.create_doctor = async (req, res) =>
     const email = req.body.email;
     const phoneNumber = req.body.phone_number;
     const afm = req.body.afm;
+    const address = req.body.address;
+    const physio_name = req.body.physio_name;
 
     /* Insert into 'user' table */
     const query = `INSERT INTO physiolink.user (username, password, role) VALUES ('${username}', '${password}', 'doctor');`;
@@ -26,8 +28,8 @@ exports.create_doctor = async (req, res) =>
     const id = await driver.executeQuery(idQuery);
 
     /* Insert the doctor user into 'doctor' table aswell */
-    const docQuery = `INSERT INTO physiolink.doctor (id, name, surname, email, phone_number, afm) VALUES ` +
-                     `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${afm}')`;
+    const docQuery = `INSERT INTO physiolink.doctor (id, name, surname, email, phone_number, afm, address, physio_name) VALUES ` +
+                     `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${afm}', '${address}', '${physio_name}')`;
     await driver.executeQuery(docQuery);
 
     res.end();

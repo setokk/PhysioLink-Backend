@@ -8,6 +8,7 @@ let logger = require('morgan');
 /* Router initialization */
 let indexRouter = require('./routes/index');
 let authRouter = require('./routes/auth');
+let psfRouter = require('./routes/psf');
 let doctorRouter = require('./routes/doctor/doctor');
 let doctorsRouter = require('./routes/doctor/doctors');
 let patientRouter = require('./routes/patient/patient');
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /* Routes */
 app.use('/physiolink/api', indexRouter);
 app.use('/physiolink/api/auth', authRouter);
+app.use('/physiolink/api/psf', psfRouter);
 app.use('/physiolink/api/doctor', doctorRouter);
 app.use('/physiolink/api/doctors', doctorsRouter);
 app.use('/physiolink/api/patient', patientRouter);

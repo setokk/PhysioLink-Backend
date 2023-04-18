@@ -1,5 +1,7 @@
 'use strict';
 
+const driver = require('../../utils/db/DatabaseDriver');
+
 exports.get_patient = (req, res) =>
 {
 
@@ -25,8 +27,8 @@ exports.create_patient = async (req, res) =>
     const id = await driver.executeQuery(idQuery);
 
     /* Insert the patient user into 'patient' table aswell */
-    const patientQuery = `INSERT INTO physiolink.patient (id, name, surname, email, phone_number, afm) VALUES ` +
-                     `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${amka}')`;
+    const patientQuery = `INSERT INTO physiolink.patient (id, name, surname, email, phone_number, amka, doc_id) VALUES ` +
+                     `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${amka}', ${doctor_id})`;
     await driver.executeQuery(patientQuery);
 
     /* Use doctor_id and patient_id to connect them in a 'HAS_PATIENT' table */
