@@ -31,8 +31,6 @@ exports.create_patient = async (req, res) =>
                      `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${amka}', ${doctor_id})`;
     await driver.executeQuery(patientQuery);
 
-    /* Use doctor_id and patient_id to connect them in a 'HAS_PATIENT' table */
-
     res.end();
 }
 
