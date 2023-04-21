@@ -10,5 +10,5 @@ exports.create_psf = async (req, res) =>
     const query = `INSERT INTO physiolink.user (username, password, role) VALUES ('${username}', '${password}', 'psf')`;
     await driver.executeQuery(query);
     
-    res.end();
+    res.status(201).end();
 }

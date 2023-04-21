@@ -32,7 +32,7 @@ exports.create_patient = async (req, res) =>
                      `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${address}', '${amka}', ${doctor_id})`;
     await driver.executeQuery(patientQuery);
 
-    res.end();
+    res.status(201).end();
 }
 
 exports.edit_patient = (req, res) =>

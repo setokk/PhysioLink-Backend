@@ -3,7 +3,9 @@
 let express = require('express');
 let router = express.Router();
 const patientController = require('../../controllers/patient/patientController');
+const userCreationMiddleware = require('../../middlewares/userCreationMiddleware');
 
-router.post('/create', patientController.create_patient);
+router.post('/create', userCreationMiddleware.username_check, 
+        patientController.create_patient);
 
 module.exports = router;
