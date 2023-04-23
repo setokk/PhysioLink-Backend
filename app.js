@@ -13,8 +13,8 @@ let doctorRouter = require('./routes/doctor/doctor');
 let doctorsRouter = require('./routes/doctor/doctors');
 let patientRouter = require('./routes/patient/patient');
 let patientsRouter = require('./routes/patient/patients');
-let provisionRouter = require('./routes/provision/provision');
-let provisionsRouter = require('./routes/provision/provisions');
+let serviceRouter = require('./routes/service/service');
+let servicesRouter = require('./routes/service/services');
 
 /* Local dependencies */
 require('./utils/db/DatabaseDriver');
@@ -38,7 +38,7 @@ app.use('/physiolink/api/doctor', doctorRouter);
 app.use('/physiolink/api/doctors', doctorsRouter);
 app.use('/physiolink/api/patient', patientRouter);
 app.use('/physiolink/api/patients', patientsRouter);
-app.use('/physiolink/api/provision', provisionRouter);
-app.use('/physiolink/api/provisions', provisionsRouter);
+app.use('/physiolink/api/service', serviceRouter);
+app.use('/physiolink/api/services', servicesRouter);
 
 module.exports = app;

@@ -2,6 +2,6 @@
 
 let express = require('express');
 let router = express.Router();
-const provisionController = require('../../controllers/provision/provisionController');
+const serviceController = require('../../controllers/service/serviceController');
 
 module.exports = router;
