@@ -17,6 +17,12 @@
         background: #595959;
     }
 
+    html
+    {
+        color: #e9ebf0;
+        font-family: 'Manrope', sans-serif; 
+    }
+
     body
     {
         background-color: #0DAB8B;
@@ -26,22 +32,59 @@
 
     main
     {
-        color: #e9ebf0;
-        font-family: 'Manrope', sans-serif; 
         text-align: center;
-        background-color: var(--matte-background);
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 6rem;
     }
 
     main h1
     {
         font-size: 1.6rem;
     }
+
+    main > ul
+    {
+        list-style: none;
+    }
+
+    #homepage
+    {
+        text-decoration: none;
+        color: white;
+        transition: 200ms color;
+    }
+
+    #homepage:hover
+    {
+        color: #0DAB8B;
+        transition: 200ms color;
+    }
+
+    #header-sticky
+    {
+        background-color: var(--matte-background);
+        justify-content: center;
+        text-align: center;
+        position: fixed;
+        min-width: 100vw;
+        top: 40px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #header-sticky h1
+    {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    
 </style>
 <body>
+    <header id="header-sticky">
+        <h1><a href="#top" id="homepage">PhysioLink API Documentation Reference</a></h1>
+    </header>
     <main>
-        <h1>PhysioLink API Documentation Reference</h1>
+        
     </main>
 </body>
 </html>
