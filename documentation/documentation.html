@@ -116,6 +116,9 @@
     hr
     {
         color: white;
+        border-radius: 7px;
+        border-width: 1.5px;
+        border-style: solid;
     }
 
     .h3-normal
@@ -141,22 +144,6 @@
         border-radius: 5px;
         min-width: 700px;
         max-width: 700px;
-    }
-
-    .center-part > h2 > a::before
-    {
-        content: '';
-        display: block;
-        height: 180px;
-        margin-top: -180px;
-    }
-
-    .center-part > h3 > a::before,.center-part > pre > a::before
-    {
-        content: '';
-        display: block;
-        height: 220px;
-        margin-top: -220px;
     }
 </style>
 <body>
@@ -197,7 +184,11 @@
         <pre>- <a href="#services-route">services</a> (url starts with /services)</pre>
         <pre>- <a href="#psf-route">psf</a> (url starts with /psf. Only for demonstration purposes. Not for production code.)</pre>
         <br>
+        <p><span class="highlighted">IMPORTANT: </span>Wherever there are parentheses, we indicate the <span class="highlighted">maximum</span> characters in case of a string property. 
+            <span class="highlighted">DO NOT</span> use the parentheses when making
+            requests to the server.</p>
         <br>
+        <hr>
         <h3><a href="#doctor-route" id="doctor-route">Doctor Route</a> [/doctor]</h3>
         <p>Responsible for handling doctor objects. List of api endpoints:</p>
         <br>
@@ -205,9 +196,6 @@
             - <span class="matte-grey">[POST] /create:</span> 
             Creates a doctor in the database. The id is <span class="highlighted">AUTO-INCREMENTED</span>
              and is an <span class="highlighted">INT</span>. 
-             Wherever there are parentheses, we indicate the maximum characters in case of a string property. 
-             <span class="highlighted">DO NOT</span> use the parentheses when making
-             requests to the server.
              <br>
              <br>
              Expects a <span class="highlighted">JSON</span> body with the fields:
@@ -228,13 +216,42 @@ physio_name(40) -> physio center the doctor works at</pre>
             <br>
             <br> 
             The properties returned in <span class="highlighted">JSON</span> are:
-            <pre class="matte-grey-rounder">name -> the doctor's name
-surname -> the doctor's surname
-email -> the doctor's email
-phone_number -> the doctor's phone number
-afm -> the doctor's tax identification number 
-address -> the doctor's/physio center address 
-physio_name -> physio center the doctor works at</pre>
+            <pre class="matte-grey-rounder">name(50) -> the doctor's name
+surname(50) -> the doctor's surname
+email(70) -> the doctor's email
+phone_number(25) -> the doctor's phone number
+afm(15) -> the doctor's tax identification number 
+address(60) -> the doctor's/physio center address 
+physio_name(40) -> physio center the doctor works at</pre>
+        </code>
+        <br>
+        <br>
+        <hr>
+        <h3><a href="#doctors-route" id="doctors-route">Doctors Route</a> [/doctors]</h3>
+        <p>Responsible for handling doctors in lists. List of API endpoints:</p>
+        <code>
+            - <span class="matte-grey">[GET] /get:</span>
+            Get a list of all doctors in the database.
+            <br>
+            <br>
+            Returns a <span class="highlighted">JSON Array</span> with doctor DTO (data transfer object)
+            <pre class="matte-grey-rounder">id -> AUTO-INCREMENTED id
+name(50) -> the doctor's name
+surname(50) -> the doctor's surname
+email(70) -> the doctor's email
+phone_number(25) -> the doctor's phone number
+afm(15) -> the doctor's tax identification number 
+address(60) -> the doctor's/physio center address 
+physio_name(40) -> physio center the doctor works at</pre>
+        </code>
+        <br>
+        <br>
+        <hr>
+        <h3><a href="#patient-route" id="patient-route">Patient Route</a> [/patient]</h3>
+        <p>Responsible for handling patient objects. List of API endpoints:</p>
+        <code>
+            - <span class="matte-grey">[POST] /create:</span>
+
         </code>
     </main>
 </body>
