@@ -58,14 +58,14 @@
         transition: 200ms color;
     }
 
-    main li a
+    main a
     {
         text-decoration: none;
         color: white;
         transition: 200ms color;
     }
 
-    main li a:hover
+    main a:hover
     {
         color: var(--matte-background);
         transition: 200ms color;
@@ -89,12 +89,12 @@
         padding-right: 1rem;
     }
 
-    #center-part h3
+    .center-part h3
     {
         font-weight: normal;
     }
 
-    #center-part
+    .center-part
     {
         justify-content: center;
         text-align: center;
@@ -116,6 +116,29 @@
     {
         color: white;
     }
+
+    .h3-normal
+    {
+        font-weight: normal;
+    }
+
+    .highlighted
+    {
+        color: #fa6c41;
+        font-weight: bolder;
+    }
+
+    .matte-grey
+    {
+        background-color: var(--matte-background);
+        border-radius: 2px;   
+    }
+
+    .matte-grey-rounder
+    {
+        background-color: var(--matte-background);
+        border-radius: 5px;
+    }
 </style>
 <body>
     <header id="header-sticky">
@@ -123,7 +146,7 @@
     </header>
     <main>
         <hr>
-        <div id="center-part">
+        <div class="center-part">
             <h2>This is the API reference documentation for PhysioLink Backend.</h2>
             <h3>This app is written as part of the Development of Android Applications course, University of Macedonia.</h3>
             <ul> 
@@ -136,15 +159,33 @@
         <hr>
         <br>
         <br>
+        <div class="center-part">
+            <h2><a href="#routes" id="routes">Routes</a></h2>
+        </div>
+        <p>Routes are how we apply SRP (Single Responsibility Principle) to the application's API routes.
+            Each route is responsible for handling different kind of objects. We can have multiple functionalities
+            on a single <span class="highlighted">object</span>, but not for many objects.
+        </p>
+        <p>When we refer to an <span class="highlighted">object</span>, we refer to a business logic entity (ex. PSF, Doctor or Patient in our case). 
+            An object can even be something more complex rather than a single DTO (ex. Appointment). It just needs to have a certain <span class="highlighted">goal</span> (starting with the same url).
+        </p>
+        <h3 class="h3-normal">The routes currently in use in this project are:</h3>
+        <pre>- <a href="#doctor-route">doctor</a> (url starts with /doctor)</pre>
+        <pre>- <a href="#doctors-route">doctors</a> (url starts with /doctors)</pre>
+        <pre>- <a href="#patient-route">patient</a> (url starts with /patient)</pre>
+        <pre>- <a href="#patients-route">patients</a> (url starts with /patients)</pre>
+        <pre>- <a href="#service-route">service</a> (url starts with /service)</pre>
+        <pre>- <a href="#services-route">services</a> (url starts with /services)</pre>
+        <pre>- <a href="#psf-route">psf</a> (url starts with /psf. Only for demonstration purposes. Not for production code.)</pre>
         <br>
         <br>
+        <h3><a href="#doctor-route" id="doctor-route">Doctor Route</a> [/doctor]</h3>
+        <p>Responsible for handling doctor objects. List of api endpoints:</p>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
+        <code>- <span class="matte-grey">[POST] /create:</span> Creates a doctor in the database. Expects a <span class="highlighted">JSON</span> 
+            body with the fields:
+            <pre class="matte-grey-rounder"></pre> 
+        </code>
     </main>
 </body>
 </html>
