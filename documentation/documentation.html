@@ -86,6 +86,7 @@
     #header-sticky h1
     {
         padding-left: 1rem;
+        padding-top: 1rem;
         padding-right: 1rem;
     }
 
@@ -138,6 +139,8 @@
     {
         background-color: var(--matte-background);
         border-radius: 5px;
+        min-width: 700px;
+        max-width: 700px;
     }
 </style>
 <body>
@@ -182,9 +185,22 @@
         <h3><a href="#doctor-route" id="doctor-route">Doctor Route</a> [/doctor]</h3>
         <p>Responsible for handling doctor objects. List of api endpoints:</p>
         <br>
-        <code>- <span class="matte-grey">[POST] /create:</span> Creates a doctor in the database. Expects a <span class="highlighted">JSON</span> 
-            body with the fields:
-            <pre class="matte-grey-rounder"></pre> 
+        <code>- <span class="matte-grey">[POST] /create:</span> Creates a doctor in the database. The id is <span class="highlighted">AUTO-INCREMENTED</span>
+             and is an <span class="highlighted">INT</span>. 
+             Wherever there are parentheses, we indicate the maximum characters in case of a string property. 
+             <span class="highlighted">DO NOT</span> use the parentheses when making
+             requests to the server.
+             <br>
+             Expects a <span class="highlighted">JSON</span> body with the fields:
+            <pre class="matte-grey-rounder">username -> the doctor's username
+password -> the doctor's password
+name -> the doctor's name
+surname -> the doctor's name
+email -> the doctor's email
+phone_number -> the doctor's phone number
+afm -> the doctor's tax identification number
+address -> the doctor's/physio center address
+physio_name -> physio center the doctor works at</pre> 
         </code>
     </main>
 </body>
