@@ -2,9 +2,31 @@
 
 const driver = require('../../utils/db/DatabaseDriver');
 
-exports.get_doctor = (req, res) =>
+exports.get_doctor = async (req, res) =>
 {
+    const id = req.params.id;
 
+    const query = 'SELECT name, surname, email, phone_number, address, afm, physio_name ' +
+                `FROM physiolink.doctor WHERE doctor.id = ${id};`;
+    const result = await driver.executeQuery(query);
+
+    if (result.length == 0)
+    {
+        res.json({message: `Doctor does not exist with id ${id}`});
+        return;
+    }
+    
+    const doctor = 
+    {
+        name: result[0].name,
+        surname: result[0].surname,
+        email: result[0].email,
+        phone_number: result[0].phone_number,
+        afm: result[0].afm,
+        address: result[0].address,
+        physio_name: result[0].physio_name,
+    }
+    res.json({doctor});
 }
 
 exports.create_doctor = async (req, res) =>
