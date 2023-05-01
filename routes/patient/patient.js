@@ -7,5 +7,6 @@ const userCreationMiddleware = require('../../middlewares/userCreationMiddleware
 
 router.post('/create', userCreationMiddleware.username_check, 
         patientController.create_patient);
+router.get('/get/:id', patientController.get_patient);
 
 module.exports = router;
