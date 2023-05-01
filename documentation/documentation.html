@@ -27,12 +27,11 @@
     {
         background-color: #0DAB8B;
         justify-content: center;
-        text-align: center;
+        
     }
 
     main
     {
-        text-align: center;
         padding-top: 6rem;
     }
 
@@ -41,7 +40,7 @@
         font-size: 1.6rem;
     }
 
-    main > ul
+    main ul
     {
         list-style: none;
     }
@@ -56,6 +55,19 @@
     #homepage:hover
     {
         color: #0DAB8B;
+        transition: 200ms color;
+    }
+
+    main li a
+    {
+        text-decoration: none;
+        color: white;
+        transition: 200ms color;
+    }
+
+    main li a:hover
+    {
+        color: var(--matte-background);
         transition: 200ms color;
     }
 
@@ -77,14 +89,62 @@
         padding-right: 1rem;
     }
 
-    
+    #center-part h3
+    {
+        font-weight: normal;
+    }
+
+    #center-part
+    {
+        justify-content: center;
+        text-align: center;
+    }
+
+    li
+    {
+        display: inline;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 5px;
+        border-color: white;
+        padding: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    hr
+    {
+        color: white;
+    }
 </style>
 <body>
     <header id="header-sticky">
         <h1><a href="#top" id="homepage">PhysioLink API Documentation Reference</a></h1>
     </header>
     <main>
-        
+        <hr>
+        <div id="center-part">
+            <h2>This is the API reference documentation for PhysioLink Backend.</h2>
+            <h3>This app is written as part of the Development of Android Applications course, University of Macedonia.</h3>
+            <ul> 
+                <li><a href="#routes">Routes</a></li>
+                <li><a href="#middlewares">Middlewares</a></li>
+                <li><a href="#controllers">Controllers</a></li>
+                <li><a href="#utils">Utils</a></li>
+            </ul>
+        </div>
+        <hr>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
     </main>
 </body>
 </html>
