@@ -9,7 +9,8 @@
 <style>
     :root
     {
-        --matte-background: #323332;
+        --matte-background: rgba(50, 51, 50, 1);
+        --matte-background-transparent: rgba(50, 51, 50, 0.7);
     }
 
     *::selection
@@ -73,7 +74,7 @@
 
     #header-sticky
     {
-        background-color: var(--matte-background);
+        background-color: var(--matte-background-transparent);
         justify-content: center;
         text-align: center;
         position: fixed;
@@ -155,6 +156,7 @@
         <div class="center-part">
             <h2>This is the API reference documentation for PhysioLink Backend.</h2>
             <h3>This app is written as part of the Development of Android Applications course, University of Macedonia.</h3>
+            <div style="opacity: 0;" id="routes"></div>
             <ul> 
                 <li><a href="#routes">Routes</a></li>
                 <li><a href="#middlewares">Middlewares</a></li>
@@ -166,7 +168,7 @@
         <br>
         <br>
         <div class="center-part">
-            <h2><a href="#routes" id="routes">Routes</a></h2>
+            <h2><a href="#routes">Routes</a></h2>
         </div>
         <p>Routes are how we apply SRP (Single Responsibility Principle) to the application's API routes.
             Each route is responsible for handling different kind of objects. We can have multiple functionalities
@@ -184,12 +186,13 @@
         <pre>- <a href="#services-route">services</a> (url starts with /services)</pre>
         <pre>- <a href="#psf-route">psf</a> (url starts with /psf. Only for demonstration purposes. Not for production code.)</pre>
         <br>
+        <div style="opacity: 0;" id="doctor-route"></div>
         <p><span class="highlighted">IMPORTANT: </span>Wherever there are parentheses, we indicate the <span class="highlighted">maximum</span> characters in case of a string property. 
             <span class="highlighted">DO NOT</span> use the parentheses when making
             requests to the server.</p>
         <br>
         <hr>
-        <h3><a href="#doctor-route" id="doctor-route">Doctor Route</a> [/doctor]</h3>
+        <h3><a href="#doctor-route">Doctor Route</a> [/doctor]</h3>
         <p>Responsible for handling doctor objects. List of api endpoints:</p>
         <br>
         <code>
@@ -220,14 +223,14 @@ physio_name(40) -> physio center the doctor works at</pre>
 surname(50) -> the doctor's surname
 email(70) -> the doctor's email
 phone_number(25) -> the doctor's phone number
-afm(15) -> the doctor's tax identification number 
+afm(15) -> the doctor's tax identification number <div style="opacity: 0;" id="doctors-route"></div>
 address(60) -> the doctor's/physio center address 
 physio_name(40) -> physio center the doctor works at</pre>
         </code>
         <br>
         <br>
         <hr>
-        <h3><a href="#doctors-route" id="doctors-route">Doctors Route</a> [/doctors]</h3>
+        <h3><a href="#doctors-route">Doctors Route</a> [/doctors]</h3>
         <p>Responsible for handling doctors in lists. List of API endpoints:</p>
         <code>
             - <span class="matte-grey">[GET] /get:</span>
@@ -237,6 +240,43 @@ physio_name(40) -> physio center the doctor works at</pre>
             Returns a <span class="highlighted">JSON Array</span> with doctor DTO (data transfer object)
             <pre class="matte-grey-rounder">id -> AUTO-INCREMENTED id
 name(50) -> the doctor's name
+surname(50) -> the doctor's surname 
+email(70) -> the doctor's email
+phone_number(25) -> the doctor's phone number <div style="opacity: 0;" id="patient-route"></div>
+afm(15) -> the doctor's tax identification number 
+address(60) -> the doctor's/physio center address 
+physio_name(40) -> physio center the doctor works at</pre>
+        </code>
+        <br>
+        <br>
+        <hr>
+        <h3><a href="#patient-route">Patient Route</a> [/patient]</h3>
+        <p>Responsible for handling patient objects. List of API endpoints:</p>
+        <code>
+            - <span class="matte-grey">[POST] /create:</span>
+            Creates a patient in the database. The id is <span class="highlighted">AUTO-INCREMENTED</span>
+             and is an <span class="highlighted">INT</span>. Only a <span class="highlighted">doctor</span> can create a patient.
+             <br>
+             <br>
+             Expects a <span class="highlighted">JSON</span> body with the fields:
+            <pre class="matte-grey-rounder">username(50) -> the patient's username
+password(50) -> the patient's password
+name(50) -> the patient's name
+surname(50) -> the patient's surname
+email(70) -> the patient's email
+phone_number(25) -> the patient's phone number
+amka(30) -> the patient's social security number
+address(60) -> the patient's address
+doc_id[INT] -> the doctor that created this patient</pre> 
+        </code>
+        <br>
+        <code>
+            - <span class="matte-grey">[GET] /get/{id}:</span>
+            Get a patient's info, given their id.
+            <br>
+            <br> 
+            The properties returned in <span class="highlighted">JSON</span> are:
+            <pre class="matte-grey-rounder">name(50) -> the doctor's name
 surname(50) -> the doctor's surname
 email(70) -> the doctor's email
 phone_number(25) -> the doctor's phone number
@@ -247,12 +287,6 @@ physio_name(40) -> physio center the doctor works at</pre>
         <br>
         <br>
         <hr>
-        <h3><a href="#patient-route" id="patient-route">Patient Route</a> [/patient]</h3>
-        <p>Responsible for handling patient objects. List of API endpoints:</p>
-        <code>
-            - <span class="matte-grey">[POST] /create:</span>
-
-        </code>
     </main>
 </body>
 </html>

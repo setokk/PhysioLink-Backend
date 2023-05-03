@@ -15,6 +15,7 @@ let patientRouter = require('./routes/patient/patient');
 let patientsRouter = require('./routes/patient/patients');
 let serviceRouter = require('./routes/service/service');
 let servicesRouter = require('./routes/service/services');
+let appointmentRouter = require('./routes/appointment/appointment');
 
 /* Local dependencies */
 require('./utils/db/DatabaseDriver');
@@ -40,5 +41,6 @@ app.use('/physiolink/api/patient', patientRouter);
 app.use('/physiolink/api/patients', patientsRouter);
 app.use('/physiolink/api/service', serviceRouter);
 app.use('/physiolink/api/services', servicesRouter);
+app.use('/physiolink/api/appointment', appointmentRouter);
 
 module.exports = app;
