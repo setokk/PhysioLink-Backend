@@ -15,3 +15,27 @@ exports.request_appointment = async (req, res) =>
 
     res.status(201).end();
 }
+
+exports.accept_appointment = async (req, res) =>
+{
+    const doc_id = req.body.doc_id;
+    const appoint_id = req.body.appoint_id;
+
+    const query = 'UPDATE physiolink.appointment SET isConfirmed=true ' +
+                `WHERE id=${appoint_id} AND doc_id=${doc_id}`;
+    await driver.executeQuery(query);
+
+    res.status(200).end();
+}
+
+exports.decline_appointment = async (req, res) =>
+{
+    const doc_id = req.body.doc_id;
+    const appoint_id = req.body.appoint_id;
+
+    const query = 'DELETE FROM physiolink.appointment ' +
+                `WHERE id=${appoint_id} AND doc_id=${doc_id}`;
+    await driver.executeQuery(query);
+
+    res.status(200).end();
+}

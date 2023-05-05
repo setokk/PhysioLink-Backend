@@ -3,9 +3,9 @@
 let express = require('express');
 let router = express.Router();
 const doctorController = require('../../controllers/doctor/doctorController');
-const userCreationMiddleware = require('../../middlewares/userCreationMiddleware');
+const userMiddleware = require('../../middlewares/userMiddleware');
 
-router.post('/create', userCreationMiddleware.username_check, 
+router.post('/create', userMiddleware.username_check, 
         doctorController.create_doctor);
 router.get('/get/:id', doctorController.get_doctor);
 
