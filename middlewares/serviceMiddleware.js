@@ -1,6 +1,7 @@
 'use strict';
 
 const driver = require('../utils/db/DatabaseDriver');
+const Error = require('../utils/error/Error');
 
 exports.check_service_exists = async (req, res, next) =>
 {
@@ -17,5 +18,5 @@ exports.check_service_exists = async (req, res, next) =>
         return;
     }
 
-    res.json({message: 'Service with same id or title already exists'});
+    res.json({message: Error.RESOURCE_EXISTS});
 }

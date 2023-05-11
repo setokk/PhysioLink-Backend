@@ -1,6 +1,7 @@
 'use strict';
 
 const driver = require('../../utils/db/DatabaseDriver');
+const Error = require('../../utils/error/Error');
 
 exports.get_service = async (req, res) =>
 {
@@ -11,7 +12,7 @@ exports.get_service = async (req, res) =>
 
     if (result.length == 0)
     {
-        res.json({message: `Service does not exist with id ${id}`});
+        res.json({message: Error.RESOURCE_NOT_FOUND});
         return;
     }
 

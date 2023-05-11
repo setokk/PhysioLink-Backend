@@ -2,11 +2,13 @@
 
 const driver = require('../../utils/db/DatabaseDriver');
 
+const Error = require('../../utils/error/Error');
+
 exports.get_all_patients = async (req, res) =>
 {
     const query = 'SELECT * FROM physiolink.patient;';
     const patients = await driver.executeQuery(query);
-    res.json(patients);
+    res.json({patients});
 }
 
 exports.get_doctor_patients = async (req, res) =>
@@ -20,7 +22,7 @@ exports.get_doctor_patients = async (req, res) =>
 
     if (patients.length == 0)
     {
-        res.json({message: `No patients for doctor with id ${doc_id}`});
+        res.json({message: Error.RESOURCE_NOT_FOUND});
         return;
     }
 

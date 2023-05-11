@@ -2,6 +2,8 @@
 
 const driver = require('../utils/db/DatabaseDriver');
 
+const Error = require('../utils/error/Error');
+
 exports.log_in = async (req, res) =>
 {
     const username = req.body.username;
@@ -12,7 +14,7 @@ exports.log_in = async (req, res) =>
     
     if (result.length == 0) // Didn't find a match
     {
-        res.json({ message: 'Invalid credentials' });
+        res.json({ message: Error.INVALID_CREDENTIALS });
         return;
     }
     

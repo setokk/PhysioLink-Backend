@@ -1,30 +1,32 @@
 'use strict';
 
 const driver = require('../../utils/db/DatabaseDriver');
+const Error = require('../../utils/error/Error');
 
 exports.get_patient = async (req, res) =>
 {
     const id = req.params.id;
-
-    const query = 'SELECT name, surname, email, phone_number, amka, address, doc_id ' +
-                    `FROM physiolink.patient WHERE patient.id = ${id};`
+    
+    const query = 'SELECT user.username, name, surname, email, phone_number, amka, address, doc_id ' +
+                    `FROM physiolink.patient INNER JOIN physiolink.user ON user.id = patient.id WHERE patient.id = ${id};`
     const result = await driver.executeQuery(query);
     
     if (result.length == 0)
     {
-        res.json({message: `Patient does not exist with id ${id}`});
+        res.json({message: Error.RESOURCE_NOT_FOUND});
         return;
     }
     
     const patient = 
     {
+        username: result[0].username,
         name: result[0].name,
         surname: result[0].surname,
         email: result[0].email,
         phone_number: result[0].phone_number,
         amka: result[0].amka,
         address: result[0].address,
-        doc_id: result[0].doc_id,
+        doctor_id: result[0].doctor_id,
     }
     res.json({patient});
 }

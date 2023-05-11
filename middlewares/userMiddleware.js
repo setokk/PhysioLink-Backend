@@ -1,6 +1,7 @@
 'use strict';
 
 const driver = require('../utils/db/DatabaseDriver');
+const Error = require('../utils/error/Error');
 
 exports.username_check = async (req, res, next) =>
 {
@@ -14,5 +15,5 @@ exports.username_check = async (req, res, next) =>
         return;
     }
 
-    res.status(400).json({message: 'Username already exists'});
+    res.status(400).json({message: Error.RESOURCE_EXISTS});
 }
