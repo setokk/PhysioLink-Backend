@@ -23,6 +23,8 @@ exports.request_appointment = async (req, res) =>
     const doctor_email = await driver.executeQuery(`SELECT email FROM physiolink.doctor ` +
                     `WHERE doctor.id = ${doctor_id}`);
     
+    res.status(201).end();
+
     /* Split DATETIME type ('2017-07-18 16:00:00') into DATE and HOUR */
     const splitted_date = date.split(' ');
     EmailFactory.getInstance().sendRequestEmail(doctor_email[0].email, {
@@ -33,8 +35,6 @@ exports.request_appointment = async (req, res) =>
             hour: splitted_date[1],
             message: message
     });
-
-    res.status(201).end();
 }
 
 exports.accept_appointment = async (req, res) =>
