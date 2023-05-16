@@ -54,9 +54,11 @@ exports.decline_appointment = async (req, res) =>
     const doc_id = req.body.doc_id;
     const appoint_id = req.body.appoint_id;
 
+    await driver.executeQuery('START TRANSACTION;');
     const query = 'DELETE FROM physiolink.appointment ' +
                 `WHERE id=${appoint_id} AND doc_id=${doc_id}`;
     await driver.executeQuery(query);
+    await driver.executeQuery('COMMIT;');
 
     res.status(200).end();
 }
