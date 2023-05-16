@@ -39,11 +39,11 @@ exports.request_appointment = async (req, res) =>
 
 exports.accept_appointment = async (req, res) =>
 {
-    const doc_id = req.body.doc_id;
+    const doctor_id = req.body.doctor_id;
     const appoint_id = req.body.appoint_id;
 
     const query = 'UPDATE physiolink.appointment SET isConfirmed=true ' +
-                `WHERE id=${appoint_id} AND doc_id=${doc_id}`;
+                `WHERE id=${appoint_id} AND doc_id=${doctor_id}`;
     await driver.executeQuery(query);
 
     res.status(200).end();
