@@ -43,7 +43,7 @@ exports.accept_appointment = async (req, res) =>
     const appoint_id = req.body.appoint_id;
 
     const query = 'UPDATE physiolink.appointment SET isConfirmed=true ' +
-                `WHERE id=${appoint_id} AND doc_id=${doctor_id}`;
+                `WHERE id=${appoint_id} AND doctor_id=${doctor_id}`;
     await driver.executeQuery(query);
 
     res.status(200).end();
@@ -51,12 +51,12 @@ exports.accept_appointment = async (req, res) =>
 
 exports.decline_appointment = async (req, res) =>
 {
-    const doc_id = req.body.doc_id;
+    const doctor_id = req.body.doctor_id;
     const appoint_id = req.body.appoint_id;
 
     await driver.executeQuery('START TRANSACTION;');
     const query = 'DELETE FROM physiolink.appointment ' +
-                `WHERE id=${appoint_id} AND doc_id=${doc_id}`;
+                `WHERE id=${appoint_id} AND doctor_id=${doctor_id}`;
     await driver.executeQuery(query);
     await driver.executeQuery('COMMIT;');
 

@@ -16,9 +16,10 @@ let patientsRouter = require('./routes/patient/patients');
 let serviceRouter = require('./routes/service/service');
 let servicesRouter = require('./routes/service/services');
 let appointmentRouter = require('./routes/appointment/appointment');
+let appointmentsRouter = require('./routes/appointment/appointments');
 
 /* Local dependencies */
-require('./utils/db/DatabaseDriver').executeQuery('SET autocommit=0;');
+require('./utils/db/DatabaseDriver');
 
 const EmailFactory = require('./utils/email/EmailFactory');
 EmailFactory.getInstance(); // Load fields from constructor
@@ -42,5 +43,6 @@ app.use('/physiolink/api/patients', patientsRouter);
 app.use('/physiolink/api/service', serviceRouter);
 app.use('/physiolink/api/services', servicesRouter);
 app.use('/physiolink/api/appointment', appointmentRouter);
+app.use('/physiolink/api/appointments', appointmentsRouter);
 
 module.exports = app;
