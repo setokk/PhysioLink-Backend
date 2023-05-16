@@ -18,7 +18,7 @@ let servicesRouter = require('./routes/service/services');
 let appointmentRouter = require('./routes/appointment/appointment');
 
 /* Local dependencies */
-await require('./utils/db/DatabaseDriver').executeQuery('SET autocommit=0;');
+require('./utils/db/DatabaseDriver').executeQuery('SET autocommit=0;');
 
 const EmailFactory = require('./utils/email/EmailFactory');
 EmailFactory.getInstance(); // Load fields from constructor
