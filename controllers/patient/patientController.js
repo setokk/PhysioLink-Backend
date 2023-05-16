@@ -43,6 +43,7 @@ exports.create_patient = async (req, res) =>
     const amka = req.body.amka;
     const doctor_id = req.body.doctor_id;
 
+    await driver.executeQuery('START TRANSACTION;');
     /* Insert into 'user' table */
     const query = `INSERT INTO physiolink.user (username, password, role) VALUES ('${username}', '${password}', 'patient');`;
     await driver.executeQuery(query);
@@ -56,6 +57,7 @@ exports.create_patient = async (req, res) =>
                      `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${address}', '${amka}', ${doctor_id});`;
     await driver.executeQuery(patientQuery);
 
+    await driver.executeQuery('COMMIT;');
     res.status(201).end();
 }
 
