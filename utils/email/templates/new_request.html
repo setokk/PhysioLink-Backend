@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
     <title>Αίτημα Ραντεβού</title>
-</head>
-<body style="color: white;
-             font-family: 'Manrope', sans-serif;">
-    <div style="background-color: #0DAB8B;">
-        <hr>
-        <br>
-        <div style = "justify-content: center; 
-                      text-align: center;">
-            <img src="cid:logo" alt="PhysioLink Logo" width="100px" height="100px;" style="padding-bottom: -10px;"/>
-            <h2 style="padding-bottom: 10px;">PhysioLink Service</h2>
-            <h1>Μόλις λάβατε νέο αίτημα ραντεβού για τις {{date}}, ώρα {{hour}}</h1> 
-            <br>
-            <hr>
-            <h2>Στοιχεία Ασθενή:</h2>
-        </div>
-        <ul style="list-style: none; font-size: 1.1rem;">
-            <li><b>Όνομα: </b>{{name}}</li>
-            <li><b>Επίθετο: </b>{{surname}}</li>
-            <li><b>Κινητό Τηλέφωνο: </b>{{phoneNumber}}</li>
-            <li><b>Πρόβλημα: </b>{{message}}</li>
-        </ul>
-        <br>
-        <hr>
+  </head>
+  <body style="color: white; font-family: 'Roboto' , sans-serif; ">
+    <div style="background-color: #0dab8b; border-radius: 30px; margin: 0; padding: 2rem 0rem; ">
+      
+      <div style="justify-content: center; text-align: center">
+        <img
+          src="./icons/logo.png"
+          alt="PhysioLink Logo"
+          width="100px"
+          height="100px;"
+          style="padding-bottom: 10px; border-radius: 30px;"
+        />
+        <h2 style="padding-bottom: 10px;">PhysioLink Service</h2>
+        <h1>Μόλις λάβατε νέο αίτημα ραντεβού για τις {{date}}, ώρα {{hour}}</h1>
+        <br />
+        <hr />
+        <h2>Στοιχεία Ασθενή:</h2>
+      </div>
+      <ul style="list-style: none; font-size: 1.1rem">
+        <li><b>Όνομα: </b>{{name}}</li>
+        <li><b>Επίθετο: </b>{{surname}}</li>
+        <li><b>Κινητό Τηλέφωνο: </b>{{phoneNumber}}</li>
+        <li><b>Πρόβλημα: </b>{{message}}</li>
+      </ul>
     </div>
-</body>
+  </body>
 </html>
