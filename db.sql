@@ -17,6 +17,7 @@ CREATE  TABLE physiolink.doctor (
 	phone_number         VARCHAR(25) CHARACTER SET utf8 NOT NULL     ,
 	afm                  VARCHAR(15) CHARACTER SET utf8 NOT NULL     ,
 	address              VARCHAR(60) CHARACTER SET utf8 NOT NULL     ,
+	postal_code			 VARCHAR(10) CHARACTER SET utf8 NOT NULL     ,	
 	physio_name          VARCHAR(40) CHARACTER SET utf8  NOT NULL     ,
 	name                 VARCHAR(50) CHARACTER SET utf8 NOT NULL     ,
 	surname              VARCHAR(50) CHARACTER SET utf8 NOT NULL     
@@ -33,7 +34,8 @@ CREATE  TABLE physiolink.patient (
 	name                 VARCHAR(50) CHARACTER SET utf8 NOT NULL     ,
 	surname              VARCHAR(50) CHARACTER SET utf8 NOT NULL     ,
 	doctor_id               INT  NOT NULL     ,
-	address              VARCHAR(60) CHARACTER SET utf8 NOT NULL     
+	address              VARCHAR(60) CHARACTER SET utf8 NOT NULL     ,
+	postal_code			 VARCHAR(10) CHARACTER SET utf8 NOT NULL       
  ) engine=InnoDB;
 CREATE TABLE physiolink.appointment (
 	id                   INT  NOT NULL  AUTO_INCREMENT   PRIMARY KEY,
@@ -53,5 +55,5 @@ ALTER TABLE physiolink.appointment ADD CONSTRAINT fk_appointment_patient FOREIGN
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("psf1", "psf1", "psf");
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("doc1", "doc1", "doctor");
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("pat1", "pat1", "patient");
-INSERT INTO physiolink.doctor (id, name, surname, email, phone_number, afm, address, physio_name) VALUES (2, "Μιχαήλ", "Μπρο", "michael@physiolink.gr", "6934236578", "11594834", "Εγνατίας 24, 58234", "Απόλλων");
-INSERT INTO physiolink.patient (id, name, surname, email, phone_number, address, amka, doctor_id) VALUES (3, "Γιώργος", "Μπροο", "giwrgos@physiolink.gr", "6905394567", "Εγνατίας 10, 55344", "160501356544", 2);
+INSERT INTO physiolink.doctor (id, name, surname, email, phone_number, afm, address, postal_code, physio_name) VALUES (2, "Μιχαήλ", "Μπρο", "michael@physiolink.gr", "6934236578", "11594834", "Εγνατίας 24", "58234", "Απόλλων");
+INSERT INTO physiolink.patient (id, name, surname, email, phone_number, address, postal_code, amka, doctor_id) VALUES (3, "Γιώργος", "Μπροο", "giwrgos@physiolink.gr", "6905394567", "Εγνατίας 10", "55344", "160501356544", 2);
