@@ -54,7 +54,7 @@ exports.log_in = async (req, res) =>
             email: user[0].email,
             phone_number: user[0].phone_number,
             address: user[0].address,
-            doctor_id: user[0].doc_id,
+            doctor_id: user[0].doctor_id,
             amka: user[0].amka });
     }
 }
