@@ -6,5 +6,5 @@ exports.get_all_services = async (req, res) =>
 {
     const query = 'SELECT * FROM physiolink.service';
     const services = await driver.executeQuery(query);
-    res.json(services);
+    res.json({services});
 }
