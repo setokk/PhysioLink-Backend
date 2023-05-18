@@ -26,6 +26,7 @@ exports.get_patient = async (req, res) =>
         phone_number: result[0].phone_number,
         amka: result[0].amka,
         address: result[0].address,
+        postal_code: result[0].postal_code,
         doctor_id: result[0].doctor_id,
     }
     res.json({patient});
@@ -40,6 +41,7 @@ exports.create_patient = async (req, res) =>
     const email = req.body.email;
     const phoneNumber = req.body.phone_number;
     const address = req.body.address;
+    const postal_code = req.body.postal_code;
     const amka = req.body.amka;
     const doctor_id = req.body.doctor_id;
 
@@ -53,8 +55,8 @@ exports.create_patient = async (req, res) =>
     const id = await driver.executeQuery(idQuery);
 
     /* Insert the patient user into 'patient' table aswell */
-    const patientQuery = `INSERT INTO physiolink.patient (id, name, surname, email, phone_number, address, amka, doc_id) VALUES ` +
-                     `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${address}', '${amka}', ${doctor_id});`;
+    const patientQuery = `INSERT INTO physiolink.patient (id, name, surname, email, phone_number, address, postal_code, amka, doc_id) VALUES ` +
+                     `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${address}', '${postal_code}', '${amka}', ${doctor_id});`;
     await driver.executeQuery(patientQuery);
 
     await driver.executeQuery('COMMIT;');
