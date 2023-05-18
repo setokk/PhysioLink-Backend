@@ -48,11 +48,11 @@ exports.delete_service = async (req, res) =>
 exports.link_service_to_doc = async (req, res) =>
 {
     const service_id = req.body.service_id;
-    const doc_id = req.body.doc_id;
+    const doctor_id = req.body.doctor_id;
 
     await driver.executeQuery('START TRANSACTION;');
     const query = 'INSERT INTO physiolink.has_service (doctor_id, service_id) ' +
-                   `VALUES (${doc_id}, '${service_id}');`;
+                   `VALUES (${doctor_id}, '${service_id}');`;
     await driver.executeQuery(query);
     await driver.executeQuery('COMMIT;');
 
