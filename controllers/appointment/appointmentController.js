@@ -54,7 +54,6 @@ exports.accept_appointment = async (req, res) =>
         'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
          `WHERE appointment.id = ${appoint_id};`);
     //EmailFactory.getInstance().sendAcceptedRequestEmail(patient_email[0].email, {});
-
 }
 
 exports.decline_appointment = async (req, res) =>
@@ -69,4 +68,9 @@ exports.decline_appointment = async (req, res) =>
     await driver.executeQuery('COMMIT;');
 
     res.status(200).end();
+
+    const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
+        'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
+         `WHERE appointment.id = ${appoint_id};`);
+    //EmailFactory.getInstance().sendDeclinedRequestEmail(patient_email[0].email, {});
 }
