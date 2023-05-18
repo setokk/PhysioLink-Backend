@@ -1,8 +1,8 @@
 CREATE DATABASE physiolink;
 CREATE  TABLE physiolink.service ( 
-	id                   INT  NOT NULL     PRIMARY KEY,
+	id                   VARCHAR(100) CHARACTER SET utf8 NOT NULL PRIMARY KEY,
 	title                VARCHAR(70) CHARACTER SET utf8 NOT NULL     ,
-	description          VARCHAR(200) CHARACTER SET utf8 NOT NULL     ,
+	description          VARCHAR(400) CHARACTER SET utf8 NOT NULL     ,
 	price                DOUBLE  NOT NULL     
  ) engine=InnoDB;
 CREATE  TABLE physiolink.`user` ( 
@@ -24,7 +24,7 @@ CREATE  TABLE physiolink.doctor (
  ) engine=InnoDB;
 CREATE  TABLE physiolink.has_service ( 
 	doctor_id            INT  NOT NULL     PRIMARY KEY,
-	service_id         INT  NOT NULL     
+	service_id           VARCHAR(100) CHARACTER SET utf8 NOT NULL     
  ) engine=InnoDB;
 CREATE  TABLE physiolink.patient ( 
 	id                   INT  NOT NULL     PRIMARY KEY,
