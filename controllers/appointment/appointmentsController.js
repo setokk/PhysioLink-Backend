@@ -15,7 +15,7 @@ exports.get_doctor_appointments = async (req, res) =>
             'patient.phone_number, patient.amka FROM ' +
             'physiolink.appointment INNER JOIN physiolink.patient ' +
             'ON patient.id = appointment.patient_id ' +
-            `WHERE doctor.id = ${doctor_id};`;
+            `WHERE appointment.doctor_id = ${doctor_id};`;
 
     const appointments = await driver.executeQuery(query);
     res.status(200).json({appointments});
