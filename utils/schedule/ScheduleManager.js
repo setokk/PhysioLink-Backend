@@ -2,5 +2,10 @@
 
 module.exports = class ScheduleManager
 {
-    static TIME_SLOT = 1; // 1 hour
+    static APPOINTMENT_DURATION = 1; // hour
+
+    static prepareAndGetAvailability()
+    {
+        
+    }
 }

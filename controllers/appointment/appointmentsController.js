@@ -6,7 +6,7 @@ const ScheduleManager = require('../../utils/schedule/ScheduleManager');
 exports.get_doctor_appointments = async (req, res) =>
 {
     const doctor_id = req.query.doctor_id;
-    const date = req.query.date;
+    const date = req.query.date;  
     
     const curr_date = new Date().toLocaleDateString('zh-Hans-CN', {year: 'numeric', month: 'numeric', day: 'numeric'})
                         .replace(/\//g, "-");
