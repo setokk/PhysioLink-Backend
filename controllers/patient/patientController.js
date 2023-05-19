@@ -57,7 +57,7 @@ exports.create_patient = async (req, res) =>
     const id = await driver.executeQuery(idQuery);
 
     /* Insert the patient user into 'patient' table aswell */
-    const patientQuery = `INSERT INTO physiolink.patient (id, name, surname, email, phone_number, city, address, postal_code, amka, doc_id) VALUES ` +
+    const patientQuery = `INSERT INTO physiolink.patient (id, name, surname, email, phone_number, city, address, postal_code, amka, doctor_id) VALUES ` +
                      `(${id[0].id}, '${name}', '${surname}', '${email}', '${phoneNumber}', '${city}', '${address}', '${postal_code}', '${amka}', ${doctor_id});`;
     await driver.executeQuery(patientQuery);
 
