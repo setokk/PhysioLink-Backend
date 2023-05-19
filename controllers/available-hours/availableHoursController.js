@@ -10,7 +10,8 @@ exports.get_hours_of_month = async (req, res) =>
     const query = 'SELECT DATE_FORMAT(DATE(date), "%Y-%m-%d") AS date, GROUP_CONCAT(HOUR(date) SEPARATOR ",") AS start_hours ' +
             'FROM physiolink.appointment ' +
             `WHERE MONTH(appointment.date) = ${month} AND appointment.doctor_id = ${doctor_id} ` +
-            'GROUP BY DATE(appointment.date);';
+            'GROUP BY DATE(appointment.date) ' +
+            'ORDER BY DATE(appointment.date) ASC;';
     const dates = await driver.executeQuery(query);
 
     res.status(200).json({dates});
