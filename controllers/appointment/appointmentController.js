@@ -2,6 +2,7 @@
 
 const driver = require('../../utils/db/DatabaseDriver');
 const EmailFactory = require('../../utils/email/EmailFactory');
+const Error = require('../../utils/error/Error');
 
 exports.request_appointment = async (req, res) =>
 {
@@ -101,10 +102,16 @@ exports.get_patient_upcoming_appointment = async (req, res) =>
                 'physiolink.appointment INNER JOIN physiolink.doctor ' +
                 'ON appointment.doctor_id = doctor.id ' +
                 'WHERE appointment.isConfirmed=true AND appointment.isCompleted=false ' +
-                `AND DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") >= '${curr_date}';`;
+                `AND appointment.doctor_id = ${doctor_id} AND appointment.patient_id = ${patient_id} ` +
+                `AND DATE(appointment.date) >= '${curr_date}';`;
 
     const result = await driver.executeQuery(query);
     
+    if (result.length === 0)
+    {
+        res.status(400).json({message: Error.RESOURCE_NOT_FOUND});
+        return;
+    }
     const appointment = {
         date: result[0].date,
         hour: result[0].hour,
@@ -120,4 +127,10 @@ exports.get_patient_latest_previous_appointment = async (req, res) =>
 {
     const patient_id = req.query.patient_id;
     const doctor_id = req.query.doctor_id;
+
+    const query = 'SELECT * ' +
+        'FROM (physiolink.appointment INNER JOIN physiolink.has_payment ON has_payment.appointment_id=appointment.id) ' +
+        'INNER JOIN physiolink.service ON has_payment.service_id=service.id ' +
+        `WHERE appointment.isCompleted=true AND appointment.patient_id=${patient_id}` +
+        'ORDER BY DATE(appointment.date) DESC;';
 }

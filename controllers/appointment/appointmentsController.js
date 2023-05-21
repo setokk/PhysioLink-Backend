@@ -19,7 +19,7 @@ exports.get_doctor_confirmed_appointments = async (req, res) =>
     res.status(200).json({appointments});
 }
 
-exports.get_latest_confirmed_doctor_appointments = async (req, res) =>
+exports.get_doctor_latest_confirmed_appointments = async (req, res) =>
 {
     const doctor_id = req.query.doctor_id;
     const date = req.query.date;  
@@ -53,4 +53,9 @@ exports.get_doctor_pending_appointments = async (req, res) =>
 
     const appointments = await driver.executeQuery(query);
     res.status(200).json({appointments});
+}
+
+exports.get_patient_history_appointments = async (req, res) =>
+{
+    const patient_id = req.params.patient_id;
 }
