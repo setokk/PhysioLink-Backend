@@ -23,7 +23,8 @@ exports.get_hours_of_month = async (req, res) =>
         for (let j = 0; j < splittedStart.length; j++)
         {
             let hour = (parseInt(splittedStart[j]) + 1) % 24;
-            splittedEnd.push(hour.toString());
+            splittedEnd.push(j + "\": \"" + hour.toString())
+            splittedStart[j] = j + "\": \"" + splittedStart[j];
         }
         result[i]["start_hours"] = splittedStart;
         result[i]["end_hours"] = splittedEnd;
