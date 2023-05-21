@@ -41,6 +41,7 @@ CREATE TABLE physiolink.appointment (
     doctor_id               INT NOT NULL,
 	date                 DATETIME NOT NULL,
 	isConfirmed          BOOLEAN NOT NULL,
+	isCompleted 		 BOOLEAN NOT NULL,
 	message              VARCHAR(250) CHARACTER SET utf8 NOT NULL
 ) engine=InnoDB;
 

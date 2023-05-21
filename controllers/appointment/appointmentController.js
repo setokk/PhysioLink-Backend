@@ -14,8 +14,8 @@ exports.request_appointment = async (req, res) =>
     const patient_phone_number = req.body.patient_phone_number;
 
     await driver.executeQuery('START TRANSACTION;');
-    const query = 'INSERT INTO physiolink.appointment (date, message, isConfirmed, doctor_id, patient_id) ' +
-                    `VALUES ('${date}:00', '${message}', false, ${doctor_id}, ${patient_id})`;
+    const query = 'INSERT INTO physiolink.appointment (date, message, isConfirmed, isCompleted, doctor_id, patient_id) ' +
+                    `VALUES ('${date}:00', '${message}', false, false, ${doctor_id}, ${patient_id})`;
     await driver.executeQuery(query);
     await driver.executeQuery('COMMIT;');
 
@@ -39,7 +39,6 @@ exports.request_appointment = async (req, res) =>
 
 exports.accept_appointment = async (req, res) =>
 {
-    const doctor_id = req.body.doctor_id;
     const appointment_id = req.body.appointment_id;
 
     await driver.executeQuery('START TRANSACTION;');
@@ -58,12 +57,11 @@ exports.accept_appointment = async (req, res) =>
 
 exports.decline_appointment = async (req, res) =>
 {
-    const doctor_id = req.body.doctor_id;
     const appointment_id = req.body.appointment_id;
 
     await driver.executeQuery('START TRANSACTION;');
     const query = 'DELETE FROM physiolink.appointment ' +
-                `WHERE id=${appointment_id} AND doctor_id=${doctor_id}`;
+                `WHERE id=${appointment_id};`;
     await driver.executeQuery(query);
     await driver.executeQuery('COMMIT;');
 
@@ -83,6 +81,9 @@ exports.accept_payment = async (req, res) =>
     const query = 'INSERT INTO physiolink.has_payment (appointment_id, service_id) ' +
             `VALUES (${appointment_id}, '${service_id}');`;
     await driver.executeQuery(query);
+
+    driver.executeQuery('UPDATE physiolink.appointment SET isCompleted=true ' +
+                        `WHERE id=${appointment_id};`);
     
     res.status(201).end();
 }
