@@ -87,3 +87,37 @@ exports.accept_payment = async (req, res) =>
     
     res.status(201).end();
 }
+
+exports.get_patient_upcoming_appointment = async (req, res) =>
+{
+    const patient_id = req.query.patient_id;
+    const doctor_id = req.query.doctor_id;
+    
+    const curr_date = new Date().toLocaleDateString('zh-Hans-CN', {year: 'numeric', month: 'numeric', day: 'numeric'})
+                        .replace(/\//g, "-");
+
+    const query = 'SELECT DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") AS date, HOUR(appointment.date) AS hour, ' +
+                'doctor.address, doctor.city, doctor.postal_code, appointment.message FROM ' +
+                'physiolink.appointment INNER JOIN physiolink.doctor ' +
+                'ON appointment.doctor_id = doctor.id ' +
+                'WHERE appointment.isConfirmed=true AND appointment.isCompleted=false ' +
+                `AND DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") >= '${curr_date}';`;
+
+    const result = await driver.executeQuery(query);
+    
+    const appointment = {
+        date: result[0].date,
+        hour: result[0].hour,
+        address: result[0].address,
+        city: result[0].city,
+        postal_code: result[0].postal_code,
+        message: result[0].message
+    }
+    res.status(200).json({appointment});
+}
+
+exports.get_patient_latest_previous_appointment = async (req, res) =>
+{
+    const patient_id = req.query.patient_id;
+    const doctor_id = req.query.doctor_id;
+}

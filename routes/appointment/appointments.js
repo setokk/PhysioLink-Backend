@@ -6,6 +6,6 @@ const appointmentsController = require('../../controllers/appointment/appointmen
 
 router.get('/confirmed', appointmentsController.get_doctor_confirmed_appointments);
 router.get('/confirmed/latest', appointmentsController.get_latest_confirmed_doctor_appointments);
-router.get('/pending/:doctor_id')
+router.get('/pending/:doctor_id', appointmentsController.get_doctor_pending_appointments);
 
 module.exports = router;
