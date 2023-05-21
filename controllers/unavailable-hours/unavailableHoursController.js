@@ -2,7 +2,9 @@
 
 const driver = require('../../utils/db/DatabaseDriver');
 
-exports.get_hours_of_month = async (req, res) =>
+const ScheduleManager = require('../../utils/schedule/ScheduleManager');
+
+exports.get_unavailable_hours = async (req, res) =>
 {
     const month = req.body.month;
     const doctor_id = req.body.doctor_id;
@@ -22,7 +24,7 @@ exports.get_hours_of_month = async (req, res) =>
         let splittedEnd = [];
         for (let j = 0; j < splittedStart.length; j++)
         {
-            let hour = (parseInt(splittedStart[j]) + 1) % 24;
+            let hour = (parseInt(splittedStart[j]) + ScheduleManager.APPOINTMENT_DURATION) % 24;
             splittedEnd.push(hour.toString() + ":00");
             splittedStart[j] = splittedStart[j] + ":00";
         }
