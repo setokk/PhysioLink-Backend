@@ -16,6 +16,7 @@ class EmailFactory
     #requestHtml;
     #declinedHtml;
     #acceptedHtml;
+    #paymentHtml;
 
     constructor() 
     {
@@ -27,6 +28,9 @@ class EmailFactory
 
         const acceptedHtmlPath = path.join(__dirname, '../email/templates/request_accepted.html');
         this.acceptedHtml = fs.readFileSync(acceptedHtmlPath, 'utf-8').toString();
+
+        const paymentHtmlPath = path.join(__dirname, '../email/templates/payment_completed.html');
+        this.paymentHtml = fs.readFileSync(paymentHtmlPath, 'utf-8').toString();
     }
 
     static getInstance()
@@ -123,6 +127,39 @@ class EmailFactory
         var mailOptions = {
             to: toPatient,
             subject: "Αποδοχή Αιτήματος Ραντεβού PhysioLink",
+            html: htmlToSend,
+            attachments: [{
+                filename: 'logo.png',
+                path: logoPath,
+                cid: 'logo'
+            }]
+        };
+    
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    }
+
+    async sendCompletedPaymentEmail(toPatient, doctor)
+    {
+        const logoPath = path.join(__dirname, '../email/templates/icons/logo.png');
+
+        const template = handlebars.compile(this.paymentHtml);
+        const replacements = {
+            service_name: doctor.service_name,
+            price: doctor.price,
+            description: doctor.description,
+            date: doctor.date
+        };
+        const htmlToSend = template(replacements);
+
+        var mailOptions = {
+            to: toPatient,
+            subject: "Ολοκλήρωση Πληρωμής Ραντεβού PhysioLink",
             html: htmlToSend,
             attachments: [{
                 filename: 'logo.png',
