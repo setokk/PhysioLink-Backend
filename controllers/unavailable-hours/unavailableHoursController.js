@@ -6,12 +6,13 @@ const ScheduleManager = require('../../utils/schedule/ScheduleManager');
 
 exports.get_unavailable_hours = async (req, res) =>
 {
+    const year = req.body.year;
     const month = req.body.month;
     const doctor_id = req.body.doctor_id;
 
     const query = 'SELECT DATE_FORMAT(DATE(date), "%Y-%m-%d") AS date, GROUP_CONCAT(HOUR(date) SEPARATOR ",") AS start_hours ' +
             'FROM physiolink.appointment ' +
-            `WHERE MONTH(appointment.date) = ${month} AND appointment.doctor_id = ${doctor_id} ` +
+            `WHERE MONTH(appointment.date) = ${month} AND YEAR(appointment.date) = ${year} AND appointment.doctor_id = ${doctor_id} ` +
             'GROUP BY DATE(appointment.date) ' +
             'ORDER BY appointment.date ASC;';
     const result = await driver.executeQuery(query);
