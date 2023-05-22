@@ -41,6 +41,10 @@ exports.request_appointment = async (req, res) =>
 exports.accept_appointment = async (req, res) =>
 {
     const appointment_id = req.body.appointment_id;
+    const doctor_name = req.body.doctor_name;
+    const doctor_surname = req.body.doctor_surname;
+    const doctor_phone_number = req.body.doctor_phone_number;
+    const date = req.body.date;
 
     await driver.executeQuery('START TRANSACTION;');
     const query = 'UPDATE physiolink.appointment SET isConfirmed=true ' +
@@ -53,12 +57,23 @@ exports.accept_appointment = async (req, res) =>
     const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
         'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
          `WHERE appointment.id = ${appointment_id};`);
-    //EmailFactory.getInstance().sendAcceptedRequestEmail(patient_email[0].email, {});
+         
+    EmailFactory.getInstance().sendAcceptedRequestEmail(patient_email[0].email, {
+        name: doctor_name,
+        surname: doctor_surname,
+        phoneNumber: doctor_phone_number,
+        date: date
+    });
 }
 
 exports.decline_appointment = async (req, res) =>
 {
     const appointment_id = req.body.appointment_id;
+    const doctor_name = req.body.doctor_name;
+    const doctor_surname = req.body.doctor_surname;
+    const doctor_phone_number = req.body.doctor_phone_number;
+    const date = req.body.date;
+    const reason = req.body.reason;
 
     await driver.executeQuery('START TRANSACTION;');
     const query = 'DELETE FROM physiolink.appointment ' +
@@ -71,7 +86,13 @@ exports.decline_appointment = async (req, res) =>
     const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
         'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
          `WHERE appointment.id = ${appointment_id};`);
-    //EmailFactory.getInstance().sendDeclinedRequestEmail(patient_email[0].email, {});
+    EmailFactory.getInstance().sendDeclinedRequestEmail(patient_email[0].email, {
+            name: doctor_name,
+            surname: doctor_surname,
+            phoneNumber: doctor_phone_number,
+            date: date,
+            reason: reason
+        });
 }
 
 exports.accept_payment = async (req, res) =>
@@ -87,6 +108,8 @@ exports.accept_payment = async (req, res) =>
                         `WHERE id=${appointment_id};`);
     
     res.status(201).end();
+
+
 }
 
 exports.get_patient_upcoming_appointment = async (req, res) =>
@@ -115,22 +138,29 @@ exports.get_patient_upcoming_appointment = async (req, res) =>
     const appointment = {
         date: result[0].date,
         hour: result[0].hour,
-        address: result[0].address,
         city: result[0].city,
+        address: result[0].address,
         postal_code: result[0].postal_code,
         message: result[0].message
     }
     res.status(200).json({appointment});
 }
 
-exports.get_patient_latest_previous_appointment = async (req, res) =>
+exports.get_patient_previous_appointment = async (req, res) =>
 {
     const patient_id = req.query.patient_id;
     const doctor_id = req.query.doctor_id;
 
-    const query = 'SELECT * ' +
+    const query = 'SELECT appointment.id AS appointment_id, DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") AS date, ' +
+        'HOUR(appointment.date) AS hour, service.title AS service_title, ' +
+        'service.description AS service_description, service.price AS service_price ' +
         'FROM (physiolink.appointment INNER JOIN physiolink.has_payment ON has_payment.appointment_id=appointment.id) ' +
         'INNER JOIN physiolink.service ON has_payment.service_id=service.id ' +
-        `WHERE appointment.isCompleted=true AND appointment.patient_id=${patient_id}` +
-        'ORDER BY DATE(appointment.date) DESC;';
+        `WHERE appointment.isCompleted=true AND appointment.patient_id=${patient_id} ` +
+        `AND appointment.doctor_id=${doctor_id} ` +
+        'ORDER BY appointment.date DESC ' +
+        'LIMIT 1;';
+    const appointment = await driver.executeQuery(query);
+
+    res.status(200).json({appointment});
 }
