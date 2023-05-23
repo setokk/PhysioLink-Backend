@@ -1,4 +1,3 @@
-//for the patient doctor name doctor surname date phone phoneNumber
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +17,14 @@
           style="padding-bottom: 10px; border-radius: 30px;"
         />
         <h2 style="padding-bottom: 10px;">PhysioLink Service</h2>
-        <h1 style="padding: 1.5rem ;">Η πληρωμή για την υπηρεσία: {{service_name}} μόλις πραγματοποιήθηκε!</h1>
+        <h1 style="padding: 1.5rem ;">Η πληρωμή για την υπηρεσία: '{{service_name}}' μόλις πραγματοποιήθηκε!</h1>
         <hr />
         <h2>Πληροφορίες Χρέωσης:</h2>
         <ul style="list-style: none; font-size: 1.2rem; font-weight: 700; text-align: start;">
-        <li>Υπηρεσία: {{name}} </li>
-        <li>Τιμή υπηρεσίας: {{price}}</li>
-        <li>Περιγραφή Υπηρεσίας: {{description}}</li>
-        <li>Ημερομηνία συναλλαγής: {{date}}</li>
+        <li>Υπηρεσία: {{service_name}} </li>
+        <li>Τιμή: {{price}}€</li>
+        <li>Περιγραφή: {{description}}</li>
+        <li>Ημερομηνία ραντεβού: {{date}}</li>
       </ul>
       </div>
     

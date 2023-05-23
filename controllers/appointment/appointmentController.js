@@ -76,6 +76,10 @@ exports.decline_appointment = async (req, res) =>
     const doctor_surname = req.body.doctor_surname;
     const doctor_phone_number = req.body.doctor_phone_number;
 
+    const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
+    'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
+     `WHERE appointment.id = ${appointment_id};`);
+
     await driver.executeQuery('START TRANSACTION;');
     const query = 'DELETE FROM physiolink.appointment ' +
                 `WHERE id=${appointment_id};`;
@@ -84,9 +88,6 @@ exports.decline_appointment = async (req, res) =>
 
     res.status(200).end();
 
-    const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
-        'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
-         `WHERE appointment.id = ${appointment_id};`);
     EmailFactory.getInstance().sendDeclinedRequestEmail(patient_email[0].email, {
             name: doctor_name,
             surname: doctor_surname,
@@ -100,6 +101,7 @@ exports.accept_payment = async (req, res) =>
 {
     const appointment_id = req.body.appointment_id
     const service_id = req.body.service_id;
+    const date = req.body.date;
 
     const query = 'INSERT INTO physiolink.has_payment (appointment_id, service_id) ' +
             `VALUES (${appointment_id}, '${service_id}');`;
@@ -110,11 +112,17 @@ exports.accept_payment = async (req, res) =>
     
     res.status(201).end();
 
+    const service = await driver.executeQuery('SELECT service.title, service.description, service.price ' +
+            `FROM physiolink.service WHERE service.id = '${service_id}';`);
+
     const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
     'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
      `WHERE appointment.id = ${appointment_id};`);
     EmailFactory.getInstance().sendCompletedPaymentEmail(patient_email[0].email, {
-        
+            service_name: service[0].title,
+            price: service[0].price,
+            description: service[0].description,
+            date: date
     });
 }
 
@@ -167,6 +175,12 @@ exports.get_patient_previous_appointment = async (req, res) =>
         'ORDER BY appointment.date DESC ' +
         'LIMIT 1;';
     const appointment = await driver.executeQuery(query);
+
+    if (appointment.length === 0)
+    {
+        res.status(400).json({message: Error.RESOURCE_NOT_FOUND});
+        return;
+    }
 
     res.status(200).json({appointment});
 }
