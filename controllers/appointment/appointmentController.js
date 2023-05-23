@@ -7,6 +7,7 @@ const Error = require('../../utils/error/Error');
 exports.request_appointment = async (req, res) =>
 {
     const date = req.body.date;
+    const hour = req.body.hour;
     const message = req.body.message;
     const doctor_id = req.body.doctor_id;
     const patient_id = req.body.patient_id;
@@ -16,7 +17,7 @@ exports.request_appointment = async (req, res) =>
 
     await driver.executeQuery('START TRANSACTION;');
     const query = 'INSERT INTO physiolink.appointment (date, message, isConfirmed, isCompleted, doctor_id, patient_id) ' +
-                    `VALUES ('${date}:00', '${message}', false, false, ${doctor_id}, ${patient_id})`;
+                    `VALUES ('${date} ${hour}:00', '${message}', false, false, ${doctor_id}, ${patient_id})`;
     await driver.executeQuery(query);
     await driver.executeQuery('COMMIT;');
 
@@ -68,12 +69,12 @@ exports.accept_appointment = async (req, res) =>
 
 exports.decline_appointment = async (req, res) =>
 {
+    const date = req.body.date;
+    const reason = req.body.reason;
     const appointment_id = req.body.appointment_id;
     const doctor_name = req.body.doctor_name;
     const doctor_surname = req.body.doctor_surname;
     const doctor_phone_number = req.body.doctor_phone_number;
-    const date = req.body.date;
-    const reason = req.body.reason;
 
     await driver.executeQuery('START TRANSACTION;');
     const query = 'DELETE FROM physiolink.appointment ' +
@@ -109,7 +110,12 @@ exports.accept_payment = async (req, res) =>
     
     res.status(201).end();
 
-
+    const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
+    'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
+     `WHERE appointment.id = ${appointment_id};`);
+    EmailFactory.getInstance().sendCompletedPaymentEmail(patient_email[0].email, {
+        
+    });
 }
 
 exports.get_patient_upcoming_appointment = async (req, res) =>
