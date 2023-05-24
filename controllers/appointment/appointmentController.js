@@ -174,13 +174,22 @@ exports.get_patient_previous_appointment = async (req, res) =>
         `AND appointment.doctor_id=${doctor_id} ` +
         'ORDER BY appointment.date DESC ' +
         'LIMIT 1;';
-    const appointment = await driver.executeQuery(query);
+    const result = await driver.executeQuery(query);
 
-    if (appointment.length === 0)
+    if (result.length === 0)
     {
         res.status(400).json({message: Error.RESOURCE_NOT_FOUND});
         return;
     }
-
+    
+    const appointment = 
+    {
+        appointment_id: result[0].appointment_id,
+        date: result[0].date,
+        hour: result[0].hour,
+        service_title: result[0].service_title,
+        service_description: result[0].service_description,
+        service_price: result[0].service_price
+    };
     res.status(200).json({appointment});
 }
