@@ -13,7 +13,8 @@ exports.get_doctor_confirmed_appointments = async (req, res) =>
             'physiolink.appointment INNER JOIN physiolink.patient ' +
             'ON patient.id = appointment.patient_id ' +
             `WHERE appointment.doctor_id = ${doctor_id} AND DATE(appointment.date) = '${date}' ` +
-            'AND appointment.isConfirmed=true';
+            'AND appointment.isConfirmed=true ' +
+            'ORDER BY appointment.date ASC;';
 
     const appointments = await driver.executeQuery(query);
     res.status(200).json({appointments});

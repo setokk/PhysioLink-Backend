@@ -67,7 +67,16 @@ exports.create_doctor = async (req, res) =>
 
 exports.edit_doctor = (req, res) =>
 {
-
+    const doctor_username = req.body.username;
+    const doctor_name = req.body.doctor_name;
+    const doctor_surname = req.body.doctor_surname;
+    const doctor_email = req.body.doctor_email;
+    const doctor_phone_number = req.body.doctor_phone_number;
+    const doctor_afm = req.body.doctor_afm;
+    const doctor_city = req.body.doctor_city;
+    const doctor_address = req.body.doctor_address;
+    const doctor_postal_code = req.body.doctor_postal_code;
+    const doctor_physio_name = req.body.doctor_physio_name;
 }
 
 exports.delete_doctor = (req, res) =>
