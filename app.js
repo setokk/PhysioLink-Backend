@@ -18,6 +18,7 @@ let servicesRouter = require('./routes/service/services');
 let appointmentRouter = require('./routes/appointment/appointment');
 let appointmentsRouter = require('./routes/appointment/appointments');
 let unavailableHoursRouter = require('./routes/unavailable-hours/unavailable-hours');
+let notificationsRouter = require('./routes/notifications/notifications');
 
 /* Local dependencies */
 require('./utils/db/DatabaseDriver');
@@ -46,5 +47,6 @@ app.use('/physiolink/api/services', servicesRouter);
 app.use('/physiolink/api/appointment', appointmentRouter);
 app.use('/physiolink/api/appointments', appointmentsRouter);
 app.use('/physiolink/api/unavailable-hours', unavailableHoursRouter);
+app.use('/physiolink/api/notifications', notificationsRouter);
 
 module.exports = app;
