@@ -54,6 +54,12 @@ CREATE TABLE physiolink.has_payment (
 	service_id           VARCHAR(100) CHARACTER SET utf8 NOT NULL
 ) engine=InnoDB;
 
+CREATE TABLE physiolink.notification (
+	user_id 			INT NOT NULL,
+	title			    VARCHAR(50) CHARACTER SET utf8 NOT NULL,
+	message 			VARCHAR(100) CHARACTER SET utf8 NOT NULL
+) engine=InnoDB;
+
 ALTER TABLE physiolink.doctor ADD CONSTRAINT doc_to_user_id FOREIGN KEY ( id ) REFERENCES physiolink.`user`( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE physiolink.has_service ADD CONSTRAINT doc_to_ser_id FOREIGN KEY ( doctor_id ) REFERENCES physiolink.doctor( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE physiolink.has_service ADD CONSTRAINT ser_to_doc_id FOREIGN KEY ( service_id ) REFERENCES physiolink.service( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
