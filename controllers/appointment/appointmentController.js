@@ -3,6 +3,7 @@
 const driver = require('../../utils/db/DatabaseDriver');
 const EmailFactory = require('../../utils/email/EmailFactory');
 const Error = require('../../utils/error/Error');
+const NotificationManager = require('../../utils/notifications/NotificationManager');
 
 exports.request_appointment = async (req, res) =>
 {
@@ -28,15 +29,19 @@ exports.request_appointment = async (req, res) =>
     res.status(201).end();
 
     /* Split DATETIME type ('2017-07-18 16:00:00') into DATE and HOUR */
-    const splitted_date = date.split(' ');
     EmailFactory.getInstance().sendRequestEmail(doctor_email[0].email, {
             name: patient_name,
             surname: patient_surname,
             phoneNumber: patient_phone_number,
-            date: splitted_date[0],
-            hour: splitted_date[1],
+            date: date,
+            hour: hour + ":00",
             message: message
     });
+
+    NotificationManager.createNotification(doctor_id, 
+        "Νέο αίτημα ραντεβού",
+        `Μόλις λάβατε νέο αίτημα ραντεβού για τις ${date}, ώρα ${hour}:00`+
+        ' Για περισσότερες πληροφορίες, μπείτε στο PhysioLink');
 }
 
 exports.accept_appointment = async (req, res) =>
@@ -55,16 +60,21 @@ exports.accept_appointment = async (req, res) =>
 
     res.status(200).end();
 
-    const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
+    const patient = await driver.executeQuery('SELECT patient.email, patient.id FROM ' +
         'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
          `WHERE appointment.id = ${appointment_id};`);
          
-    EmailFactory.getInstance().sendAcceptedRequestEmail(patient_email[0].email, {
+    EmailFactory.getInstance().sendAcceptedRequestEmail(patient[0].email, {
         name: doctor_name,
         surname: doctor_surname,
         phoneNumber: doctor_phone_number,
         date: date
     });
+
+    NotificationManager.createNotification(patient[0].id, 
+        "Αποδοχή αιτήματος ραντεβού",
+        `Το αίτημα σας για ραντεβού για τις ${date} μόλις έγινε αποδεκτό!`+
+        ' Για περισσότερες πληροφορίες, μπείτε στο PhysioLink');
 }
 
 exports.decline_appointment = async (req, res) =>
@@ -76,7 +86,7 @@ exports.decline_appointment = async (req, res) =>
     const doctor_surname = req.body.doctor_surname;
     const doctor_phone_number = req.body.doctor_phone_number;
 
-    const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
+    const patient = await driver.executeQuery('SELECT patient.email, patient.id FROM ' +
     'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
      `WHERE appointment.id = ${appointment_id};`);
 
@@ -88,13 +98,18 @@ exports.decline_appointment = async (req, res) =>
 
     res.status(200).end();
 
-    EmailFactory.getInstance().sendDeclinedRequestEmail(patient_email[0].email, {
+    EmailFactory.getInstance().sendDeclinedRequestEmail(patient[0].email, {
             name: doctor_name,
             surname: doctor_surname,
             phoneNumber: doctor_phone_number,
             date: date,
             reason: reason
         });
+
+    NotificationManager.createNotification(patient[0].id, 
+        "Απόρριψη αιτήματος ραντεβού",
+        `Δυστυχώς, το αίτημα σας για ραντεβού για τις ${date} απορρίφθηκε`+
+        ' Για περισσότερες πληροφορίες, μπείτε στο PhysioLink');
 }
 
 exports.accept_payment = async (req, res) =>
@@ -115,15 +130,20 @@ exports.accept_payment = async (req, res) =>
     const service = await driver.executeQuery('SELECT service.title, service.description, service.price ' +
             `FROM physiolink.service WHERE service.id = '${service_id}';`);
 
-    const patient_email = await driver.executeQuery('SELECT patient.email FROM ' +
+    const patient = await driver.executeQuery('SELECT patient.email, patient.id FROM ' +
     'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
      `WHERE appointment.id = ${appointment_id};`);
-    EmailFactory.getInstance().sendCompletedPaymentEmail(patient_email[0].email, {
+    EmailFactory.getInstance().sendCompletedPaymentEmail(patient[0].email, {
             service_name: service[0].title,
             price: service[0].price,
             description: service[0].description,
             date: date
     });
+
+    NotificationManager.createNotification(patient[0].id, 
+        "Ολοκλήρωση πληρωμής ραντεβού",
+        `Το ραντεβού που πραγματοποιήθηκε στις ${date} μόλις χρεώθηκε!` +
+        ' Για περισσότερες πληροφορίες, μπείτε στο PhysioLink');
 }
 
 exports.get_patient_upcoming_appointment = async (req, res) =>

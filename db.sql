@@ -69,6 +69,7 @@ ALTER TABLE physiolink.appointment ADD CONSTRAINT fk_appointment_doctor FOREIGN 
 ALTER TABLE physiolink.appointment ADD CONSTRAINT fk_appointment_patient FOREIGN KEY ( patient_id ) REFERENCES physiolink.patient( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE physiolink.has_payment ADD CONSTRAINT fk_appointment_service FOREIGN KEY ( service_id ) REFERENCES physiolink.service( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE physiolink.has_payment ADD CONSTRAINT fk_service_appointment FOREIGN KEY ( appointment_id ) REFERENCES physiolink.appointment( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE physiolink.notification ADD CONSTRAINT fk_user_notification FOREIGN KEY ( user_id ) REFERENCES physiolink.`user`( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("psf1", "psf1", "psf");
