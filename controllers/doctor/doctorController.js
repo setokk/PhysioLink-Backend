@@ -65,21 +65,35 @@ exports.create_doctor = async (req, res) =>
     res.status(201).end();
 }
 
-exports.edit_doctor = (req, res) =>
+exports.edit_doctor = async (req, res) =>
 {
-    const doctor_username = req.body.username;
-    const doctor_name = req.body.doctor_name;
-    const doctor_surname = req.body.doctor_surname;
-    const doctor_email = req.body.doctor_email;
-    const doctor_phone_number = req.body.doctor_phone_number;
-    const doctor_afm = req.body.doctor_afm;
-    const doctor_city = req.body.doctor_city;
-    const doctor_address = req.body.doctor_address;
-    const doctor_postal_code = req.body.doctor_postal_code;
-    const doctor_physio_name = req.body.doctor_physio_name;
-}
+    const id = req.body.id;
+    const username = req.body.username;
+    const password = req.body.password;
+    const name = req.body.name;
+    const surname = req.body.surname;
+    const email = req.body.email;
+    const phone_number = req.body.phone_number;
+    const afm = req.body.afm;
+    const city = req.body.city;
+    const address = req.body.address;
+    const postal_code = req.body.postal_code;
+    const physio_name = req.body.physio_name;
 
-exports.delete_doctor = (req, res) =>
-{
-    
+    await driver.executeQuery('START TRANSACTION;');
+
+    const query = 'UPDATE physiolink.doctor ' + 
+                `SET doctor.name='${name}', doctor.surname='${surname}', ` +
+                `doctor.email='${email}', doctor.phone_number='${phone_number}', ` +
+                `doctor.afm='${afm}', doctor.city='${city}', doctor.address='${address}', ` +
+                `doctor.postal_code='${postal_code}', doctor.physio_name='${physio_name}' ` + 
+                `WHERE doctor.id=${id};`;
+    await driver.executeQuery(query);
+    await driver.executeQuery('UPDATE physiolink.user ' + 
+                        `SET user.username='${username}', user.password='${password}' ` + 
+                        `WHERE user.id=${id};`);
+
+    await driver.executeQuery('COMMIT;');
+
+    res.status(200).end();
 }

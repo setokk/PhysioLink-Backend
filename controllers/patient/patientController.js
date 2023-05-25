@@ -65,12 +65,35 @@ exports.create_patient = async (req, res) =>
     res.status(201).end();
 }
 
-exports.edit_patient = (req, res) =>
+exports.edit_patient = async (req, res) =>
 {
+    const id = req.body.id;
+    const username = req.body.username;
+    const password = req.body.password;
+    const name = req.body.name;
+    const surname = req.body.surname;
+    const email = req.body.email;
+    const phone_number = req.body.phone_number;
+    const amka = req.body.amka;
+    const city = req.body.city;
+    const address = req.body.address;
+    const postal_code = req.body.postal_code;
+    const doctor_id = req.body.doctor_id;
 
-}
+    await driver.executeQuery('START TRANSACTION;');
 
-exports.delete_patient = (req, res) =>
-{
-    
+    const query = 'UPDATE physiolink.patient ' + 
+                `SET patient.name='${name}', patient.surname='${surname}', ` +
+                `patient.email='${email}', patient.phone_number='${phone_number}', ` +
+                `patient.amka='${amka}', patient.city='${city}', patient.address='${address}', ` +
+                `patient.postal_code='${postal_code}', patient.doctor_id=${doctor_id} ` + 
+                `WHERE patient.id=${id};`;
+    await driver.executeQuery(query);
+    await driver.executeQuery('UPDATE physiolink.user ' + 
+                        `SET user.username='${username}', user.password='${password}' ` + 
+                        `WHERE user.id=${id};`);
+
+    await driver.executeQuery('COMMIT;');
+
+    res.status(200).end();
 }
