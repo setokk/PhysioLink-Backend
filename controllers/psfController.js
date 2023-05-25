@@ -12,3 +12,14 @@ exports.create_psf = async (req, res) =>
     
     res.status(201).end();
 }
+
+exports.get_all_psf = async (req, res) =>
+{
+    const psf_id = req.params.psf_id;
+
+    const query = 'SELECT user.username FROM physiolink.user ' +
+            `WHERE user.role='psf' AND user.id!=${psf_id};`;
+    const psfs = await driver.executeQuery(query);
+
+    res.status(200).json({psfs});
+}
