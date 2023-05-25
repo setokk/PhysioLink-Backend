@@ -57,7 +57,7 @@ CREATE TABLE physiolink.has_payment (
 CREATE TABLE physiolink.notification (
 	user_id 			INT NOT NULL,
 	title			    VARCHAR(50) CHARACTER SET utf8 NOT NULL,
-	message 			VARCHAR(100) CHARACTER SET utf8 NOT NULL
+	message 			VARCHAR(300) CHARACTER SET utf8 NOT NULL
 ) engine=InnoDB;
 
 ALTER TABLE physiolink.doctor ADD CONSTRAINT doc_to_user_id FOREIGN KEY ( id ) REFERENCES physiolink.`user`( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
