@@ -59,4 +59,26 @@ exports.get_doctor_pending_appointments = async (req, res) =>
 exports.get_patient_history_appointments = async (req, res) =>
 {
     const patient_id = req.params.patient_id;
+
+    const priceSum = await driver.executeQuery('SELECT SUM(service.price) AS total ' +
+            'FROM (physiolink.appointment INNER JOIN physiolink.has_payment ' +
+            'ON appointment.id=has_payment.appointment_id) INNER JOIN physiolink.service ' +
+            'ON has_payment.service_id=service.id ' + 
+            `WHERE appointment.isCompleted=true AND appointment.patient_id=${patient_id};`);
+
+    const query = 'SELECT DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") AS date, ' +
+            'HOUR(appointment.date) AS hour, service.title AS service_title, ' +
+            'appointment.message AS message, service.price AS price ' +
+            'FROM (physiolink.appointment INNER JOIN physiolink.has_payment ' +
+            'ON appointment.id=has_payment.appointment_id) INNER JOIN physiolink.service ' +
+            'ON has_payment.service_id=service.id ' + 
+            `WHERE appointment.isCompleted=true AND appointment.patient_id=${patient_id} ` +
+            'ORDER BY appointment.date DESC;';
+    const appointments = await driver.executeQuery(query);
+
+    const history = {
+        appointments: appointments,
+        total_payment: priceSum[0].total
+    };
+    res.status(200).json({history});
 }
