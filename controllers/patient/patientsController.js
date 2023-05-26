@@ -15,7 +15,7 @@ exports.get_doctor_patients = async (req, res) =>
 {
     const doc_id = req.params.doc_id;
 
-    const query = 'SELECT user.id, username, name, surname, email, phone_number, address, postal_code, amka ' 
+    const query = 'SELECT user.id, username, name, surname, email, phone_number, amka, city, address, postal_code ' 
                     + 'FROM physiolink.patient INNER JOIN physiolink.user '
                     + `ON patient.id = user.id WHERE patient.doctor_id = ${doc_id};`;
     const patients = await driver.executeQuery(query);
