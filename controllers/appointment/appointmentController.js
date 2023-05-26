@@ -158,7 +158,7 @@ exports.get_patient_upcoming_appointment = async (req, res) =>
                 'doctor.address, doctor.city, doctor.postal_code, appointment.message FROM ' +
                 'physiolink.appointment INNER JOIN physiolink.doctor ' +
                 'ON appointment.doctor_id = doctor.id ' +
-                'WHERE appointment.isConfirmed=true AND appointment.isCompleted=false ' +
+                'WHERE appointment.isCompleted=false ' +
                 `AND appointment.doctor_id = ${doctor_id} AND appointment.patient_id = ${patient_id} ` +
                 `AND DATE(appointment.date) >= '${curr_date}';`;
 
@@ -187,7 +187,8 @@ exports.get_patient_previous_appointment = async (req, res) =>
 
     const query = 'SELECT appointment.id AS appointment_id, DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") AS date, ' +
         'HOUR(appointment.date) AS hour, service.title AS service_title, ' +
-        'service.description AS service_description, service.price AS service_price ' +
+        'service.description AS service_description, service.price AS service_price, ' +
+        'appointment.message AS message ' +
         'FROM (physiolink.appointment INNER JOIN physiolink.has_payment ON has_payment.appointment_id=appointment.id) ' +
         'INNER JOIN physiolink.service ON has_payment.service_id=service.id ' +
         `WHERE appointment.isCompleted=true AND appointment.patient_id=${patient_id} ` +
@@ -209,7 +210,8 @@ exports.get_patient_previous_appointment = async (req, res) =>
         hour: result[0].hour,
         service_title: result[0].service_title,
         service_description: result[0].service_description,
-        service_price: result[0].service_price
+        service_price: result[0].service_price,
+        message: result[0].message
     };
     res.status(200).json({appointment});
 }
