@@ -30,8 +30,9 @@ exports.get_doctor_latest_confirmed_appointments = async (req, res) =>
     console.log(curr_date);
 
     const query = 'SELECT appointment.id AS appointment_id, patient.name AS patient_name, ' + 
-            'patient.surname AS patient_surname, patient.phone_number, patient.amka FROM ' +
-            'physiolink.appointment INNER JOIN physiolink.patient ' +
+            'patient.surname AS patient_surname, patient.phone_number, patient.amka, ' +
+            'DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") AS date, HOUR(appointment.date) AS hour ' +
+            'FROM physiolink.appointment INNER JOIN physiolink.patient ' +
             'ON patient.id = appointment.patient_id ' +
             `WHERE appointment.doctor_id = ${doctor_id} AND DATE(appointment.date) = '${date}' ` +
             'AND appointment.isConfirmed=true ' +
@@ -46,8 +47,9 @@ exports.get_doctor_pending_appointments = async (req, res) =>
     const doctor_id = req.params.doctor_id;
 
     const query = 'SELECT appointment.id AS appointment_id, patient.name AS patient_name, ' + 
-            'patient.surname AS patient_surname, patient.phone_number, patient.amka FROM ' +
-            'physiolink.appointment INNER JOIN physiolink.patient ' +
+            'patient.surname AS patient_surname, patient.phone_number, patient.amka, ' +
+            'DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") AS date, HOUR(appointment.date) AS hour ' + 
+            'FROM physiolink.appointment INNER JOIN physiolink.patient ' +
             'ON patient.id = appointment.patient_id ' +
             `WHERE appointment.doctor_id = ${doctor_id} ` +
             'AND appointment.isConfirmed=false;';
