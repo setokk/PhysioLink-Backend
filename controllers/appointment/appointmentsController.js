@@ -10,6 +10,7 @@ exports.get_doctor_confirmed_appointments = async (req, res) =>
 
     const query = 'SELECT appointment.id AS appointment_id, patient.name AS patient_name, ' + 
             'patient.surname AS patient_surname, patient.phone_number, patient.amka, ' +
+            'DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") AS date, HOUR(appointment.date) AS hour, ' +
             'appointment.isCompleted AS isCompleted ' +
             'FROM physiolink.appointment INNER JOIN physiolink.patient ' +
             'ON patient.id = appointment.patient_id ' +
