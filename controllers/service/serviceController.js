@@ -40,9 +40,21 @@ exports.edit_service = async (req, res) =>
 
 }
 
-exports.delete_service = async (req, res) =>
+exports.delete_service_of = async (req, res) =>
 {
-    
+    const service_title = req.body.service_title;
+    const doctor_id = req.body.doctor_id;
+
+    const service = await driver.executeQuery('SELECT service.id AS id FROM physiolink.service ' +
+                        `WHERE service.title='${service_title}';`);
+
+    console.log(service);
+    const query = 'DELETE FROM physiolink.has_service ' + 
+                `WHERE has_service.service_id='${service[0].id}' ` + 
+                `AND has_service.doctor_id=${doctor_id};`;
+    await driver.executeQuery(query);
+
+    res.status(200).end();
 }
 
 exports.link_service_to_doc = async (req, res) =>
