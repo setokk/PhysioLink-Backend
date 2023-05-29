@@ -155,8 +155,9 @@ exports.get_patient_upcoming_appointment = async (req, res) =>
                         .replace(/\//g, "-");
 
     const query = 'SELECT DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") AS date, HOUR(appointment.date) AS hour, ' +
-                'doctor.address, doctor.city, doctor.postal_code, appointment.message FROM ' +
-                'physiolink.appointment INNER JOIN physiolink.doctor ' +
+                'doctor.address, doctor.city, doctor.postal_code, appointment.message, ' +
+                'appointment.isConfirmed AS isConfirmed ' +
+                'FROM physiolink.appointment INNER JOIN physiolink.doctor ' +
                 'ON appointment.doctor_id = doctor.id ' +
                 'WHERE appointment.isCompleted=false ' +
                 `AND appointment.doctor_id = ${doctor_id} AND appointment.patient_id = ${patient_id} ` +
@@ -175,7 +176,8 @@ exports.get_patient_upcoming_appointment = async (req, res) =>
         city: result[0].city,
         address: result[0].address,
         postal_code: result[0].postal_code,
-        message: result[0].message
+        message: result[0].message,
+        isConfirmed: result[0].isConfirmed
     }
     res.status(200).json({appointment});
 }
