@@ -65,7 +65,7 @@ exports.get_patient_history_appointments = async (req, res) =>
 {
     const patient_id = req.params.patient_id;
 
-    const priceSum = await driver.executeQuery('SELECT SUM(service.price) AS total ' +
+    const priceSum = await driver.executeQuery('SELECT COALESCE(SUM(service.price), 0) AS total ' +
             'FROM (physiolink.appointment INNER JOIN physiolink.has_payment ' +
             'ON appointment.id=has_payment.appointment_id) INNER JOIN physiolink.service ' +
             'ON has_payment.service_id=service.id ' + 
