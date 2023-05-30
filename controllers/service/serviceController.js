@@ -37,7 +37,20 @@ exports.create_service = async (req, res) =>
 
 exports.edit_service = async (req, res) =>
 {
+    const service_id = req.body.service_id;
+    const title = req.body.title;
+    const description = req.body.description;
+    const price = req.body.price;
 
+    await driver.executeQuery('START TRANSACTION;');
+    
+    await driver.executeQuery('UPDATE physiolink.service ' + 
+                    `SET service.title='${title}', service.description='${description}', ` +
+                    `service.price=${price} ` +
+                    `WHERE service.id='${service_id}'`);
+
+    await driver.executeQuery('COMMIT;');
+    res.status(200).end();
 }
 
 exports.delete_service_of = async (req, res) =>
