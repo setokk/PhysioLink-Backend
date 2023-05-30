@@ -38,7 +38,7 @@ exports.get_doctor_latest_confirmed_appointments = async (req, res) =>
             'ON patient.id = appointment.patient_id ' +
             `WHERE appointment.doctor_id = ${doctor_id} AND DATE(appointment.date) = '${date}' ` +
             'AND appointment.isConfirmed=true ' +
-            'LIMIT 3;';   
+            'AND appointment.isCompleted=false LIMIT 3;';   
 
     const appointments = await driver.executeQuery(query);
     res.status(200).json({appointments});
