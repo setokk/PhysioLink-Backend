@@ -90,7 +90,7 @@ exports.edit_patient = async (req, res) =>
                 `WHERE patient.id=${id};`;
     await driver.executeQuery(query);
     await driver.executeQuery('UPDATE physiolink.user ' + 
-                        `SET user.username='${username}', user.password='${password}' ` + 
+                        `SET user.username='${username}' ` + 
                         `WHERE user.id=${id};`);
 
     await driver.executeQuery('COMMIT;');
