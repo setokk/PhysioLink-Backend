@@ -5,9 +5,9 @@ const Error = require('../../utils/error/Error');
 
 exports.get_service = async (req, res) =>
 {
-    const id = req.params.id;
+    const id = decodeURIComponent(req.params.id);
 
-    const query = `SELECT * FROM physiolink.service WHERE service.id = ${id};`;
+    const query = `SELECT * FROM physiolink.service WHERE service.id = '${id}';`;
     const result = await driver.executeQuery(query);
 
     if (result.length == 0)
