@@ -37,7 +37,7 @@ exports.create_service = async (req, res) =>
 
 exports.edit_service = async (req, res) =>
 {
-    const service_id = decodeURIComponent(req.body.service_id);
+    const service_id = req.body.service_id;
     const title = req.body.title;
     const description = req.body.description;
     const price = req.body.price;
