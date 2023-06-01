@@ -48,6 +48,10 @@ exports.get_doctor_pending_appointments = async (req, res) =>
 {
     const doctor_id = req.params.doctor_id;
 
+    const curr_date = new Date().toLocaleDateString('zh-Hans-CN', {year: 'numeric', month: 'numeric', day: 'numeric'})
+                        .replace(/\//g, "-");
+    console.log(curr_date);
+
     const query = 'SELECT appointment.id AS appointment_id, patient.name AS patient_name, ' + 
             'patient.surname AS patient_surname, patient.phone_number, patient.amka, ' +
             'DATE_FORMAT(DATE(appointment.date), "%Y-%m-%d") AS date, HOUR(appointment.date) AS hour, ' +
@@ -55,6 +59,7 @@ exports.get_doctor_pending_appointments = async (req, res) =>
             'FROM physiolink.appointment INNER JOIN physiolink.patient ' +
             'ON patient.id = appointment.patient_id ' +
             `WHERE appointment.doctor_id = ${doctor_id} ` +
+            `AND DATE(appointment.date)>='${curr_date}' ` +
             'AND appointment.isConfirmed=false;';
 
     const appointments = await driver.executeQuery(query);
