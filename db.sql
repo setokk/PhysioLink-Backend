@@ -72,7 +72,6 @@ ALTER TABLE physiolink.has_payment ADD CONSTRAINT fk_appointment_service FOREIGN
 ALTER TABLE physiolink.has_payment ADD CONSTRAINT fk_service_appointment FOREIGN KEY ( appointment_id ) REFERENCES physiolink.appointment( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE physiolink.notification ADD CONSTRAINT fk_user_notification FOREIGN KEY ( user_id ) REFERENCES physiolink.`user`( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("psf1", "psf1", "psf");
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("doc1", "doc1", "doctor");
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("pat1", "pat1", "patient");
@@ -144,8 +143,6 @@ INSERT INTO physiolink.`user` (username, password, role) VALUES ("pat48", "pat48
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("pat49", "pat49", "patient");
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("pat50", "pat50", "patient");
 
-
-
 INSERT INTO physiolink.doctor (id, name, surname, email, phone_number, afm, city, address, postal_code, physio_name) VALUES (2, "Γιώργος", "Παπαδόπουλος", "giorgos.papadopoulos@physiolink.gr", "6911111111", "111111111", "Θεσσαλονίκη", "Τσιμισκή 296", "51111", "Αίολος");
 INSERT INTO physiolink.patient (id, name, surname, email, phone_number, city, address, postal_code, amka, doctor_id) VALUES (3, "Ιάσων", "Καραφουλίδης", "iason.karoufoulidis@physiolink.gr", "6900000000", "Κιλκίς", "Εγνατίας 10", "50000", "22222200001", 2);
 INSERT INTO physiolink.patient (id, name, surname, email, phone_number, city, address, postal_code, amka, doctor_id) VALUES (4, "Μαρία", "Δολεσίδου", "maria.dolesidou@physiolink.gr", "6900000001", "Αθήνα", "Κατερίνας 3", "50001", "22222200002", 2);
@@ -216,8 +213,6 @@ INSERT INTO physiolink.patient (id, name, surname, email, phone_number, city, ad
 INSERT INTO physiolink.patient (id, name, surname, email, phone_number, city, address, postal_code, amka, doctor_id) VALUES (60, "Αθανάσιος", "Βλάχος", "athanasios.vlachos@physiolink.gr", "6900000048", "Τρίκαλα", "Σιδηροδρόμου 89", "50048", "22222200049", 56);
 INSERT INTO physiolink.patient (id, name, surname, email, phone_number, city, address, postal_code, amka, doctor_id) VALUES (61, "Ευάγγελος", "Οικονόμου", "euaggelos.oikonomou@physiolink.gr", "6900000049", "Τρίκαλα", "Μαγνησίας 24", "50049", "22222200050", 56);
 
-
-
 INSERT INTO physiolink.service (id, title, description,price) VALUES ("ΦΘ-001","Αθλητική μάλαξη","Μια εξειδικευμένη υπηρεσία για ασθενείς με χρόνια αποφρακτική πνευμονοπάθεια (ΧΑΠ), μια κοινή πνευμονοπάθεια που συχνά προκαλείται από το κάπνισμα, η οποία περιλαμβάνει διάγνωση, θεραπεία, αποκατάσταση και συνεχή διαχείριση.",45);
 INSERT INTO physiolink.service (id, title, description,price) VALUES ("ΦΘ-002","Οστεοαρθρίτιδα ","Η θεραπεία για την οστεοαρθρίτιδα επικεντρώνεται στη διαχείριση των συμπτωμάτων της νόσου και στην επιβράδυνση της εξέλιξής της. Χρησιμοποιούμε μια σειρά θεραπειών, όπως φυσικοθεραπεία, φαρμακευτική αγωγή, ενέσεις στις αρθρώσεις και τροποποιήσεις του τρόπου ζωής για να σας βοηθήσουμε να διαχειριστείτε τα συμπτώματά σας και να βελτιώσετε την ποιότητα ζωής σας.",100);
 INSERT INTO physiolink.service (id, title, description,price) VALUES ("ΦΘ-003","Αρθροπλαστική","Η αρθροπλαστική είναι μια χειρουργική επέμβαση που περιλαμβάνει την αντικατάσταση μιας κατεστραμμένης ή άρρωστης άρθρωσης με μια τεχνητή άρθρωση. Παρέχουμε διαδικασίες αρθροπλαστικής σε ασθενείς με σοβαρή βλάβη των αρθρώσεων ή χρόνιο πόνο που δεν μπορεί να αντιμετωπιστεί με άλλες θεραπείες.",70);
@@ -262,8 +257,6 @@ INSERT INTO physiolink.service (id, title, description,price) VALUES ("ΦΘ-041"
 INSERT INTO physiolink.service (id, title, description,price) VALUES ("ΦΘ-042","Κύφωση","Μια εξειδικευμένη υπηρεσία για ασθενείς με κύφωση, μια πάθηση που χαρακτηρίζεται από μη φυσιολογική καμπυλότητα της σπονδυλικής στήλης, η οποία περιλαμβάνει πρόληψη, διάγνωση, θεραπεία και αποκατάσταση.",100);
 INSERT INTO physiolink.service (id, title, description,price) VALUES ("ΦΘ-043","Ηλεκτροβελονισμός","Ενισχύει τα θεραπευτικά αποτελέσματα του παραδοσιακού βελονισμού για την ανακούφιση από τον πόνο, τη μείωση του στρες ή άλλες καταστάσεις.",80);
 INSERT INTO physiolink.service (id, title, description,price) VALUES ("ΦΘ-044","Διαχείριση της νόσου της ΧΑΠ-καπνιστή","Μια εξειδικευμένη υπηρεσία για ασθενείς με χρόνια αποφρακτική πνευμονοπάθεια (ΧΑΠ), μια κοινή πνευμονοπάθεια που συχνά προκαλείται από το κάπνισμα, η οποία περιλαμβάνει διάγνωση, θεραπεία, αποκατάσταση και συνεχή διαχείριση.",100);
-
-
 
 INSERT INTO physiolink.appointment ( patient_id, doctor_id, date, isConfirmed, isCompleted, message) VALUES (3,2,"2023-04-23 10:00:00",true,true,"Πόνος στο γόνατο.");
 INSERT INTO physiolink.appointment ( patient_id, doctor_id, date, isConfirmed, isCompleted, message) VALUES (4,2,"2023-04-25 12:00:00",true,true,"Πόνος στο καρπό.");
@@ -314,8 +307,6 @@ INSERT INTO physiolink.appointment ( patient_id, doctor_id, date, isConfirmed, i
 INSERT INTO physiolink.appointment ( patient_id, doctor_id, date, isConfirmed, isCompleted, message) VALUES (58,56,"2023-04-25 12:00:00",true,true,"Πόνος στο καρπό.");
 INSERT INTO physiolink.appointment ( patient_id, doctor_id, date, isConfirmed, isCompleted, message) VALUES (59,56,"2023-06-12 14:00:00",false, false,"Πόνος στην μέση.");
 INSERT INTO physiolink.appointment ( patient_id, doctor_id, date, isConfirmed, isCompleted, message) VALUES (60,56,"2023-05-31 08:00:00",true,false,"Πόνος στο όμο.");
-
-
 
 INSERT INTO physiolink.has_service (doctor_id,service_id) VALUES (2,"ΦΘ-001");
 INSERT INTO physiolink.has_service (doctor_id,service_id) VALUES (2,"ΦΘ-002");
@@ -426,7 +417,6 @@ INSERT INTO physiolink.has_service (doctor_id,service_id) VALUES (56,"ΦΘ-040")
 INSERT INTO physiolink.has_service (doctor_id,service_id) VALUES (56,"ΦΘ-041");
 INSERT INTO physiolink.has_service (doctor_id,service_id) VALUES (56,"ΦΘ-042");
 INSERT INTO physiolink.has_service (doctor_id,service_id) VALUES (56,"ΦΘ-042");
-
 
 INSERT INTO physiolink.has_payment (appointment_id,service_id) VALUES (1,"ΦΘ-001");
 INSERT INTO physiolink.has_payment (appointment_id,service_id) VALUES (2,"ΦΘ-013");
