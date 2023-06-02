@@ -4,14 +4,14 @@ const driver = require('../utils/db/DatabaseDriver');
 
 const Error = require('../utils/error/Error');
 
-const HOSTNAME = 'http://localhost:3000';
+const HOSTNAME = 'http://physiolink.chibo.uk';
 
 exports.log_in = async (req, res) =>
 {
     const username = req.body.username;
     const password = req.body.password;
 
-    const query = `SELECT user.id, user.role, COALESCE(user.image, '${Error.RESOURCE_NOT_FOUND}') ` +
+    const query = `SELECT user.id, user.role, COALESCE(user.image, '${Error.RESOURCE_NOT_FOUND}') AS image ` +
     `FROM physiolink.user WHERE user.username = '${username}' AND user.password = '${password}'`;
     const result = await driver.executeQuery(query);
     
@@ -23,7 +23,10 @@ exports.log_in = async (req, res) =>
     
     const role = result[0].role;
     const id = result[0].id;
-    const image = HOSTNAME + '/physiolink/api/images/get/' + id;
+
+    let image = result[0].image;
+    if (image != Error.RESOURCE_NOT_FOUND)
+        image = HOSTNAME + '/physiolink/api/images/get/' + id;
     
     /* If role is psf, that's all the info we need 
         (there is no 'psf' table to get more user info from in the database) */
