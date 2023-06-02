@@ -63,3 +63,14 @@ exports.log_in = async (req, res) =>
     }
 }
 
+exports.change_password = async (req, res) =>
+{
+    const user_id = req.body.user_id;
+    const password = req.body.password;
+
+    await driver.executeQuery('UPDATE physiolink.user ' +
+    `SET user.password='${password}' ` +
+    `WHERE user.id=${user_id};`);
+
+    res.status(200).end();
+}
