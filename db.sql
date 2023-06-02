@@ -9,6 +9,7 @@ CREATE  TABLE physiolink.`user` (
 	id                   INT  NOT NULL   AUTO_INCREMENT  PRIMARY KEY,
 	username             VARCHAR(50) CHARACTER SET utf8 NOT NULL     ,
 	password             VARCHAR(50) CHARACTER SET utf8 NOT NULL     ,
+	image 			     VARCHAR(400) CHARACTER SET utf8,
 	role                 VARCHAR(25) CHARACTER SET utf8 NOT NULL     
  ) engine=InnoDB;
 CREATE  TABLE physiolink.doctor ( 

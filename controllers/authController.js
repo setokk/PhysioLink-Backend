@@ -4,12 +4,15 @@ const driver = require('../utils/db/DatabaseDriver');
 
 const Error = require('../utils/error/Error');
 
+const HOSTNAME = 'http://localhost:3000';
+
 exports.log_in = async (req, res) =>
 {
     const username = req.body.username;
     const password = req.body.password;
 
-    const query = `SELECT * FROM physiolink.user WHERE user.username = '${username}' AND user.password = '${password}'`;
+    const query = `SELECT user.id, user.role, COALESCE(user.image, '${Error.RESOURCE_NOT_FOUND}') ` +
+    `FROM physiolink.user WHERE user.username = '${username}' AND user.password = '${password}'`;
     const result = await driver.executeQuery(query);
     
     if (result.length == 0) // Didn't find a match
@@ -20,6 +23,7 @@ exports.log_in = async (req, res) =>
     
     const role = result[0].role;
     const id = result[0].id;
+    const image = HOSTNAME + '/physiolink/api/images/get/' + id;
     
     /* If role is psf, that's all the info we need 
         (there is no 'psf' table to get more user info from in the database) */
@@ -36,6 +40,7 @@ exports.log_in = async (req, res) =>
         res.json({ id: id,
             username: username,
             role: role,
+            image: image,
             name: user[0].name,
             surname: user[0].surname,
             email: user[0].email,
@@ -51,6 +56,7 @@ exports.log_in = async (req, res) =>
         res.json({ id: id,
             username: username,
             role: role,
+            image: image,
             name: user[0].name,
             surname: user[0].surname,
             email: user[0].email,
