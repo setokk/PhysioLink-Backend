@@ -115,11 +115,14 @@ exports.decline_appointment = async (req, res) =>
 exports.accept_payment = async (req, res) =>
 {
     const appointment_id = req.body.appointment_id
-    const service_id = req.body.service_id;
+    const service_title = req.body.service_title;
     const date = req.body.date;
 
+    const service_id = await driver.executeQuery('SELECT service.id AS id FROM physiolink.service ' +
+            `WHERE service.title='${service_title}';`);
+    
     const query = 'INSERT INTO physiolink.has_payment (appointment_id, service_id) ' +
-            `VALUES (${appointment_id}, '${service_id}');`;
+            `VALUES (${appointment_id}, '${service_id[0].id}');`;
     await driver.executeQuery(query);
 
     driver.executeQuery('UPDATE physiolink.appointment SET isCompleted=true ' +
