@@ -49,7 +49,7 @@ exports.create_patient = async (req, res) =>
 
     await driver.executeQuery('START TRANSACTION;');
     /* Insert into 'user' table */
-    const query = `INSERT INTO physiolink.user (username, password, role) VALUES ('${username}', '${password}', 'patient');`;
+    const query = `INSERT INTO physiolink.user (username, password, role, image) VALUES ('${username}', '${password}', 'patient', '${Error.RESOURCE_NOT_FOUND}');`;
     await driver.executeQuery(query);
 
     /* Get AUTO_INCREMENTED id */

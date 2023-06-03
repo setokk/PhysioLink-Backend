@@ -4,6 +4,8 @@ const path = require('path');
 
 const driver = require('../../utils/db/DatabaseDriver');
 
+const HOSTNAME = 'http://physiolink.chibo.uk';
+
 exports.get_image = async (req, res) =>
 {
     const user_id = req.params.user_id;
@@ -32,7 +34,7 @@ exports.upload_image = async (req, res) =>
         }
         
         await driver.executeQuery('UPDATE physiolink.user ' + 
-            `SET user.image='${path.resolve(filePath)}' ` +
+            `SET user.image='${HOSTNAME + '/physiolink/api/images/get/'}${user_id}' ` +
             `WHERE user.id=${user_id}`);
 
         console.log('Image saved:', filePath);
