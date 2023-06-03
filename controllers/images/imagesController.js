@@ -20,7 +20,7 @@ exports.upload_image = async (req, res) =>
     const user_id = req.params.user_id;
     const image = req.files.image;
 
-    const filePath = path.join(process.cwd(), '/images/profile/') + user_id + "." +
+    const filePath = "." + path.join(process.cwd(), '/images/profile/') + user_id + "." +
         image.name.split(".")[1];
     console.log(filePath);
 
