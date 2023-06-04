@@ -131,7 +131,7 @@ exports.accept_payment = async (req, res) =>
     res.status(201).end();
 
     const service = await driver.executeQuery('SELECT service.title, service.description, service.price ' +
-            `FROM physiolink.service WHERE service.id = '${service_id}';`);
+            `FROM physiolink.service WHERE service.id = '${service_id[0].id}';`);
 
     const patient = await driver.executeQuery('SELECT patient.email, patient.id FROM ' +
     'physiolink.appointment INNER JOIN physiolink.patient ON patient.id = appointment.patient_id ' +
