@@ -13,7 +13,8 @@ exports.check_appointment_exists = async (req, res, next) =>
 
     const query = 'SELECT appointment.id FROM physiolink.appointment ' +
                 `WHERE appointment.doctor_id=${doctor_id} AND appointment.patient_id=${patient_id} ` +
-                `AND '${curr_date}' <= DATE(appointment.date);`;
+                `AND '${curr_date}' <= DATE(appointment.date) ` +
+                'AND appointment.isCompleted=false;';
     const result = await driver.executeQuery(query);
 
     if (result.length != 0)
