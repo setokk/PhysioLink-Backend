@@ -73,19 +73,19 @@ ALTER TABLE physiolink.has_payment ADD CONSTRAINT fk_service_appointment FOREIGN
 ALTER TABLE physiolink.notification ADD CONSTRAINT fk_user_notification FOREIGN KEY ( user_id ) REFERENCES physiolink.`user`( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 INSERT INTO physiolink.`user` (username, password, role) VALUES ("psf1", "psf1", "psf");
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc1", "doc1", "doctor", "Resource not found");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc1", "doc1", "doctor", "http://localhost:3000/physiolink/api/images/get/2");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat1", "pat1", "patient", "Resource not found");
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat2", "pat2", "patient", "Resource not found");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat2", "pat2", "patient", "http://localhost:3000/physiolink/api/images/get/4");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat3", "pat3", "patient", "Resource not found");
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat4", "pat4", "patient", "Resource not found");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat4", "pat4", "patient", "http://localhost:3000/physiolink/api/images/get/6");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat5", "pat5", "patient", "Resource not found");
 
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc2", "doc2", "doctor", "Resource not found");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc2", "doc2", "doctor", "http://localhost:3000/physiolink/api/images/get/8");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat6", "pat6", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat7", "pat7", "patient", "Resource not found");
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat8", "pat8", "patient", "Resource not found");
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat9", "pat9", "patient", "Resource not found");
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat10", "pat10", "patient", "Resource not found");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat8", "pat8", "patient", "http://localhost:3000/physiolink/api/images/get/11");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat9", "pat9", "patient", "http://localhost:3000/physiolink/api/images/get/12");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat10", "pat10", "patient", "http://localhost:3000/physiolink/api/images/get/13");
 
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc3", "doc3", "doctor", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat11", "pat11", "patient", "Resource not found");
@@ -94,14 +94,14 @@ INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat13",
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat14", "pat14", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat15", "pat15", "patient", "Resource not found");
 
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc4", "doc4", "doctor", "Resource not found");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc4", "doc4", "doctor", "http://localhost:3000/physiolink/api/images/get/20");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat16", "pat16", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat17", "pat17", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat18", "pat18", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat19", "pat19", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat20", "pat20", "patient", "Resource not found");
 
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc5", "doc5", "doctor", "Resource not found");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc5", "doc5", "doctor", "http://localhost:3000/physiolink/api/images/get/26");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat21", "pat21", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat22", "pat22", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat23", "pat23", "patient", "Resource not found");
@@ -115,7 +115,7 @@ INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat28",
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat29", "pat29", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat30", "pat30", "patient", "Resource not found");
 
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc7", "doc7", "doctor", "Resource not found");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc7", "doc7", "doctor", "http://localhost:3000/physiolink/api/images/get/38");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat31", "pat31", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat32", "pat32", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat33", "pat33", "patient", "Resource not found");
