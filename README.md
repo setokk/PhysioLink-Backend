@@ -32,7 +32,7 @@ Furthermore, extra functionalities were implemented, such as:
 	<li><b>Updating user information (password, username, email etc.)</b></li>
 	<li><b>More patient/doctor information (city, address, postal code)</b></li>
 </ul>
-You can find out more about the functionalities in the <b>[API Documentation Reference](https://github.com/setokk/PhysioLink-Backend/blob/main/documentation/documentation.html)</b>
+You can find out more about the functionalities in the [API Documentation Reference](https://github.com/setokk/PhysioLink-Backend/blob/main/documentation/documentation.html)
 
 <hr>
 
