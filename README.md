@@ -1,7 +1,7 @@
 # PhysioLink-Backend
 Backend source code (Team 11) for Development of Android Applications, University of Macedonia (UoM)
 <br>
-The app is written in Nodejs and specifically using the Expressjs framework.
+This app is written in Nodejs and specifically using the Expressjs framework.
 <br>
 <img src="screenshots/api-reference.png" />
 <hr>
@@ -32,6 +32,7 @@ Furthermore, extra functionalities were implemented, such as:
 	<li><b>Updating user information (password, username, email etc.)</b></li>
 	<li><b>More patient/doctor information (city, address, postal code)</b></li>
 </ul>
+You can find out more about the functionalities in the <b>[API Documentation Reference](https://github.com/setokk/PhysioLink-Backend/blob/main/documentation/documentation.html)</b>
 
 <hr>
 
