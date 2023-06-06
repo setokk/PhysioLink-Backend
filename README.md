@@ -22,7 +22,7 @@ The app is written in Nodejs and specifically using the Expressjs framework.
 <hr>
 
 ### Functionalities
-The backend app follows and supports the requirements given from the assignment. 
+The backend app follows and supports the requirements as given from the assignment. 
 Furthermore, extra functionalities were implemented, such as:
 <ul>
 	<li><b>Notification system</b></li>
@@ -30,6 +30,7 @@ Furthermore, extra functionalities were implemented, such as:
 	<li><b>Profile Image uploading</b></li>
 	<li><b>Personalized doctor/physiotherapist services</b></li>
 	<li><b>Updating user information (password, username, email etc.)</b></li>
+	<li><b>More patient/doctor information (city, address, postal code)</b></li>
 </ul>
 
 <hr>
