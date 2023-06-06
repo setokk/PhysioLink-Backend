@@ -38,7 +38,7 @@ You can find out more about the functionalities in the [API Documentation Refere
 <hr>
 
 ### Running the app
-There are 2 ways to run the app (using docker or installing locally):
+Although it is not needed since the is a live server, there are 2 ways to run the app (using docker or installing locally):
 #### - Docker (recommended)
 ```
 ** IMPORTANT **
@@ -54,6 +54,7 @@ Run:
 <hr>
 
 ### Requirements
+
 
 <hr>
 
