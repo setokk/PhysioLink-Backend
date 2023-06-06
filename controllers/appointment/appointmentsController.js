@@ -40,7 +40,9 @@ exports.get_doctor_latest_confirmed_appointments = async (req, res) =>
             'physiolink.user ON user.id=patient.id ' +
             `WHERE appointment.doctor_id = ${doctor_id} AND DATE(appointment.date) = '${date}' ` +
             'AND appointment.isConfirmed=true ' +
-            'AND appointment.isCompleted=false LIMIT 3;';   
+            'AND appointment.isCompleted=false ' +
+            'ORDER BY appointment.date ASC ' +
+            'LIMIT 3;';   
 
     const appointments = await driver.executeQuery(query);
     res.status(200).json({appointments});
