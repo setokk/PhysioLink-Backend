@@ -41,7 +41,9 @@ You can find out more about the functionalities in the [API Documentation Refere
 There are 2 ways to run the app (using docker or installing locally):
 #### - Docker (recommended)
 ```
-
+Run:
+1) docker-setup.bat (can be found in root path of project)
+2) docker exec -it physiolink-db mariadb --user root -proot
 ```
 
 <hr>
