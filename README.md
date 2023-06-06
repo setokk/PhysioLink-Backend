@@ -1,2 +1,2 @@
 # PhysioLink-Backend
-Backend source code for PhysioLink.
+<img src="screenshots/api-reference.png" />
