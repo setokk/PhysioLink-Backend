@@ -41,10 +41,13 @@ You can find out more about the functionalities in the [API Documentation Refere
 There are 2 ways to run the app (using docker or installing locally):
 #### - Docker (recommended)
 ```
+** IMPORTANT **
+Because MariaDB listens on 3306, make sure there are no running processes using port 3306 before following the steps below.
+
 Run:
-1) docker-setup.bat (or docker-setup.sh | they can be found in the root path of project)
+1) docker-setup.bat (or docker-setup.sh | they can be found in the root path of the project)
 2) docker exec -it physiolink-db mariadb --user root -proot
-3) Copy and paste all SQL code from db.sql in the interactive terminal (db.sql can also be found in the root path of project)
+3) Copy and paste all SQL code from db.sql in the interactive terminal (db.sql can also be found in the root path of the project)
 4) Done!
 ```
 
