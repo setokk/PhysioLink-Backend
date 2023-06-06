@@ -10,7 +10,7 @@ class DatabaseConnector
     {
         this.#pool = this.#mariadb.createPool({
             host: host,
-            port: 6034,
+            port: 3306,
             user: user,
             password: password,
             connectionLimit: connectionLimit,
