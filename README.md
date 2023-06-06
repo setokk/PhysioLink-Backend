@@ -38,6 +38,11 @@ You can find out more about the functionalities in the [API Documentation Refere
 <hr>
 
 ### Running the app
+There are 2 ways to run the app (using docker or installing locally):
+#### - Docker (recommended)
+```
+
+```
 
 <hr>
 
