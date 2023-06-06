@@ -15,7 +15,7 @@ This app is written in Nodejs and specifically using the Expressjs framework.
     <li><b>Panagiotis Stergioulas-Bolis</b></li>
     <li><b>Koudouni Alexandra</b></li>
     <li><b>Shenepremte Eleni</b></li>
-    <li><b>Sofoklis Panteklhs</b></li>
+    <li><b>Sophocles Panteris</b></li>
     <li><b>Iason Karafoulidis</b></li>
     <li><b>Christos Tsarchopoulos</b></li>
 </ul>
@@ -42,9 +42,9 @@ There are 2 ways to run the app (using docker or installing locally):
 #### - Docker (recommended)
 ```
 Run:
-1) docker-setup.bat (can be found in root path of project)
+1) docker-setup.bat (or docker-setup.sh | they can be found in the root path of project)
 2) docker exec -it physiolink-db mariadb --user root -proot
-3) Copy and paste all SQL code from db.sql in the interactive terminal (db.sql can also be found in root path of project)
+3) Copy and paste all SQL code from db.sql in the interactive terminal (db.sql can also be found in the root path of project)
 4) Done!
 ```
 
