@@ -1,5 +1,6 @@
 # PhysioLink-Backend
 Backend source code (Team 11) for Development of Android Applications, University of Macedonia (UoM)
+<br>
 <img src="screenshots/api-reference.png" />
 <hr>
 
@@ -17,6 +18,7 @@ Backend source code (Team 11) for Development of Android Applications, Universit
     <li><b>Christos Tsarchopoulos</b></li>
 </ul>
 <hr>
+
 ### Functionalities
 The backend app follows and supports the requirements given from the assignment. 
 Furthermore, extra functionalities were implemented, such as:
