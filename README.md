@@ -61,7 +61,7 @@ Requirements:
 - MariaDB
 
 1) Clone the repository
-2) Go to the file <a href="https://github.com/setokk/PhysioLink-Backend/blob/main/utils/db/DatabaseDriver.js">DatabaseDriver.js</a> and change <b>the physiodb</b> <i>new DatabaseConnector(<b>"physiodb"</b>, "root", "root", DB_CONN_LIMIT);</i> to <b>localhost</b>
+2) Go to the file <a href="https://github.com/setokk/PhysioLink-Backend/blob/main/utils/db/DatabaseDriver.js">DatabaseDriver.js</a> and change the <i><b>"physiodb"</b></i> in "new DatabaseConnector(<b>"physiodb"</b>, "root", "root", DB_CONN_LIMIT)" to <i><b>"localhost"</b></i>
 3) Run npm install and npm run start
 4) Run this in your terminal: <b>mysql.exe -u root -p</b>
 5) Copy and paste the code from <a href="https://github.com/setokk/PhysioLink-Backend/blob/main/db.sql">db.sql</a> to the terminal
