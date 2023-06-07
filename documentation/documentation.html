@@ -185,11 +185,21 @@
         <pre>- <a href="#service-route">service</a> (url starts with /service)</pre>
         <pre>- <a href="#services-route">services</a> (url starts with /services)</pre>
         <pre>- <a href="#appointment-route">appointment</a> (url starts with /appointment)</pre>
-        <pre>- <a href="#appointments-route">appointment</a> (url starts with /appointments)</pre>
+        <pre>- <a href="#appointments-route">appointments</a> (url starts with /appointments)</pre>
         <pre>- <a href="#unavailable-hours-route">unavailable-hours</a> (url starts with /unavailable-hours)</pre>
         <pre>- <a href="#psf-route">psf</a> (url starts with /psf. Only for demonstration purposes. Not for production code.)</pre>
         <br>
+
+
+
+
+
         <div style="opacity: 0;" id="doctor-route"></div>
+
+
+
+
+
         <p><span class="highlighted">IMPORTANT: </span>Wherever there are parentheses, we indicate the <span class="highlighted">maximum</span> characters in case of a string property. 
             <span class="highlighted">DO NOT</span> use the parentheses when making
             requests to the server.</p>
@@ -224,7 +234,17 @@ physio_name(40) -> physio center the doctor works at</pre>
             <br>
             <br> 
             The properties returned in <span class="highlighted">JSON</span> are:
+
+
+
+
+
             <div style="opacity: 0;" id="doctors-route"></div>
+
+
+
+
+
             <pre class="matte-grey-rounder">username(50) -> the doctor's username
 image(URL) -> the doctor's profile picture URL
 name(50) -> the doctor's name
@@ -248,7 +268,17 @@ physio_name(40) -> physio center the doctor works at</pre>
             <br>
             <br>
             Returns a <span class="highlighted">JSON Array</span> with doctor DTO (data transfer object)
+
+
+
+
+
             <div style="opacity: 0;" id="patient-route"></div>
+
+
+
+
+
             <pre class="matte-grey-rounder">id -> AUTO-INCREMENTED id
 image(URL) -> the doctor's profile picture URL
 name(50) -> the doctor's name
@@ -293,7 +323,16 @@ doc_id[INT] -> the doctor associated with this patient</pre>
             <br>
             <br> 
             The properties returned in <span class="highlighted">JSON</span> are:
+
+
+
+
             <div style="opacity: 0;" id="patients-route"></div>
+
+
+
+
+
             <pre class="matte-grey-rounder">username(50) -> the patient's username
 image(URL) -> the patient's profile picture URL
 name(50) -> the patient's name
@@ -334,7 +373,27 @@ doc_id[INT] -> the doctor associated with this patient
         <br>
         <hr>
         <h3><a href="#service-route">Service Route</a> [/service]</h3>
+
+
+
+        <div style="opacity: 0;" id="services-route"></div>
+
+
+
+
+
         <p>Responsible for handling service objects. List of API endpoints:</p>
+        <code>
+            - <span class="matte-grey">[POST] /create</span>
+            <br>
+            <br>
+            Creates a service object in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">id -> Unicode id
+title -> title of service
+description -> description of service
+price -> price of service (double)</pre>
+        </code>
+        <br>
         <code>
             - <span class="matte-grey">[GET] /get/{service_id}</span>
             <br>
@@ -345,6 +404,112 @@ title -> title of service
 description -> description of service
 price -> price of service (double)</pre>
         </code>
+        <br>
+        <br>
+        <hr>
+        <h3><a href="#services-route">Services Route</a> [/services]</h3>
+        <p>Responsible for handling service lists. List of API endpoints:</p>
+        <code>
+            - <span class="matte-grey">[GET] /get</span>
+            <br>
+            <br>
+            Returns all services in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">id -> Unicode id
+title -> title of service
+description -> description of service
+price -> price of service (double)</pre>
+        </code>
+        <br>
+        <code>
+            - <span class="matte-grey">[GET] /of/{doctor_id}</span>
+            <br>
+            <br>
+
+
+            <div style="opacity: 0;" id="appointment-route"></div>
+
+
+
+            Returns all services of a doctor in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">id -> Unicode id
+title -> title of service
+description -> description of service
+price -> price of service (double)</pre>
+        </code>
+        <br>
+        <br>
+        <hr>
+        <h3><a href="#appointment-route">Appointment Route</a> [/appointment]</h3>
+        <p>Responsible for handling appointment objects. List of API endpoints:</p>
+        <code>
+            - <span class="matte-grey">[POST] /request</span>
+            <br>
+            <br>
+            Returns all services in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">id -> Unicode id
+title -> title of service
+description -> description of service
+price -> price of service (double)</pre>
+        </code>
+        <br>
+        <code>
+            - <span class="matte-grey">[POST] /accept</span>
+            <br>
+            <br>
+            Returns all services of a doctor in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">id -> Unicode id
+title -> title of service
+description -> description of service
+price -> price of service (double)</pre>
+        </code>
+        <br>
+        <code>
+            - <span class="matte-grey">[POST] /decline</span>
+            <br>
+            <br>
+            Returns all services in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">id -> Unicode id
+title -> title of service
+description -> description of service
+price -> price of service (double)</pre>
+        </code>
+        <br>
+        <code>
+            - <span class="matte-grey">[POST] /payment/accept</span>
+            <br>
+            <br>
+            Returns all services of a doctor in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">id -> Unicode id
+title -> title of service
+description -> description of service
+price -> price of service (double)</pre>
+        </code>
+        <br>
+        <code>
+            - <span class="matte-grey">[GET] /patient/upcoming</span>
+            <br>
+            <br>
+            Returns all services in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">id -> Unicode id
+title -> title of service
+description -> description of service
+price -> price of service (double)</pre>
+        </code>
+        <br>
+        <code>
+            - <span class="matte-grey">[GET] /patient/previous</span>
+            <br>
+            <br>
+            Returns all services of a doctor in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">id -> Unicode id
+title -> title of service
+description -> description of service
+price -> price of service (double)</pre>
+        </code>
+        <br>
+        <br>
+        <hr>
+        
     </main>
 </body>
 </html>
