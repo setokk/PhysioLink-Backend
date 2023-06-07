@@ -42,7 +42,7 @@ Although it is not needed since there is a live server, there are 2 ways to run 
 ** IMPORTANT **
 Because MariaDB listens on 3306, make sure there are no running processes using port 3306 before following the steps below.
 #### - Docker (recommended)
-```
+<pre>
 Requirements:
 - Docker CLI or Docker Desktop
 
@@ -51,8 +51,10 @@ Run:
 2) docker exec -it physiolink-db mariadb --user root -proot
 3) Copy and paste all SQL code from db.sql in the interactive terminal (db.sql can also be found in the root path of the project)
 4) Done!
-```
+</pre>
+
 #### - Locally (not recommended)
+
 <pre>
 Requirements:
 - Nodejs
