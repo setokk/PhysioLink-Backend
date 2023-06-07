@@ -70,11 +70,12 @@ Requirements:
 <hr>
 
 ### Requirements
-
+In summary, the requirements as stated above are:
+Docker or Nodejs and MariaDB.
 
 <hr>
 
 ### Documentation
-You can find the backend API reference in "_/documentation/documentation.html_" or "_localhost:3000/physiolink/api_"
+You can find the backend API reference in **localhost:3000/physiolink/api**, if run locally.
 
 <hr>
