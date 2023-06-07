@@ -1,12 +1,12 @@
 # PhysioLink-Backend
-Backend source code (Team 11) for Development of Android Applications, University of Macedonia (UoM)
+Backend source code for Development of Android Applications, University of Macedonia (UoM)
 <br>
 This app is written in Nodejs and specifically using the Expressjs framework.
 <br>
 <img src="screenshots/api-reference.png" />
 <hr>
 
-### Team members
+### Team members (Team 11)
 <ul>
     <li><b>Kote Kostandin</b></li>
     <li><b>Theodora Katseisvili</b></li>
@@ -39,10 +39,12 @@ You can find out more about the functionalities in the [API Documentation Refere
 
 ### Running the app
 Although it is not needed since there is a live server, there are 2 ways to run the app (using docker or installing locally):
-#### - Docker (recommended)
-```
 ** IMPORTANT **
 Because MariaDB listens on 3306, make sure there are no running processes using port 3306 before following the steps below.
+#### - Docker (recommended)
+```
+Requirements:
+- Docker CLI or Docker Desktop
 
 Run:
 1) docker-setup.bat (or docker-setup.sh | they can be found in the root path of the project)
@@ -50,7 +52,19 @@ Run:
 3) Copy and paste all SQL code from db.sql in the interactive terminal (db.sql can also be found in the root path of the project)
 4) Done!
 ```
+#### - Locally (not recommended)
+<pre>
+Requirements:
+- Nodejs
+- MariaDB
 
+1) Clone the repository
+2) Go to the file <a href="https://github.com/setokk/PhysioLink-Backend/blob/main/utils/db/DatabaseDriver.js">DatabaseDriver.js</a> and change <b>the physiodb</b> <i>new DatabaseConnector(<b>"physiodb"</b>, "root", "root", DB_CONN_LIMIT);</i> to <b>localhost</b>
+3) Run npm install and npm run start
+4) Run this in your terminal: <b>mysql.exe -u root -p</b>
+5) Copy and paste the code from <a href="https://github.com/setokk/PhysioLink-Backend/blob/main/db.sql">db.sql</a> to the terminal
+6) Done!
+</pre>
 <hr>
 
 ### Requirements
