@@ -76,6 +76,6 @@ In summary, the requirements as stated above are:
 <hr>
 
 ### Documentation
-You can find the backend API reference in **localhost:3000/physiolink/api**, if run locally.
+You can find the backend API reference in <a href="http://localhost:3000/physiolink/api">localhost:3000</a>, if run locally.
 
 <hr>
