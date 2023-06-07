@@ -71,7 +71,7 @@ Requirements:
 
 ### Requirements
 In summary, the requirements as stated above are:
-Docker or Nodejs and MariaDB.
+<b>Docker</b> or <b>Nodejs</b> and <b>MariaDB</b>.
 
 <hr>
 
