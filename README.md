@@ -29,7 +29,7 @@ Furthermore, extra functionalities were implemented, such as:
 	<li><b>Email system</b></li>
 	<li><b>Profile Image uploading</b></li>
 	<li><b>Personalized doctor/physiotherapist services</b></li>
-	<li><b>Updating user information (password, username, email etc.)</b></li>
+	<li><b>Updating user information (password, name, email etc.)</b></li>
 	<li><b>More patient/doctor information (city, address, postal code)</b></li>
 </ul>
 
