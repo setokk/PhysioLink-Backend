@@ -39,7 +39,7 @@ You can find out more about the functionalities in the [API Documentation Refere
 
 ### Running the app
 Although it is not needed since there is a live server, there are 2 ways to run the app (using docker or installing locally):
-** IMPORTANT **
+</b>IMPORTANT</b>
 Because MariaDB listens on 3306, make sure there are no running processes using port 3306 before following the steps below.
 #### - Docker (recommended)
 <pre>
