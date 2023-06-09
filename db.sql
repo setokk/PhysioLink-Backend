@@ -78,7 +78,7 @@ INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat1", 
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat2", "pat2", "patient", "http://localhost:3000/physiolink/api/images/get/4");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat3", "pat3", "patient", "Resource not found");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat4", "pat4", "patient", "http://localhost:3000/physiolink/api/images/get/6");
-INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat5", "pat5", "patient", "Resource not found");
+INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat5", "pat5", "patient", "http://localhost:3000/physiolink/api/images/get/7");
 
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("doc2", "doc2", "doctor", "http://localhost:3000/physiolink/api/images/get/8");
 INSERT INTO physiolink.`user` (username, password, role, image) VALUES ("pat6", "pat6", "patient", "Resource not found");
