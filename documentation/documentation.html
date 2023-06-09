@@ -168,6 +168,17 @@
         <br>
         <br>
         <div class="center-part">
+            <span class="highlighted">SECURITY NOTICE:</span>
+            <br>
+            <p>For the requirements of this course, we didn't take into account
+            the possible security risks of this application.</p>
+            <p>In the future, the app will be penetration tested so that
+            a huge amount of security flaws are taken into account and resolved.</p>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <div class="center-part">
             <h2><a href="#routes">Routes</a></h2>
         </div>
         <p>Routes are how we apply SRP (Single Responsibility Principle) to the application's API routes.
@@ -440,23 +451,39 @@ price -> price of service (double)</pre>
         <br>
         <hr>
         <h3><a href="#appointment-route">Appointment Route</a> [/appointment]</h3>
-        <p>Responsible for handling appointment objects. List of API endpoints:</p>
+        <p>Responsible for handling appointment objects. The fields that have <i>(for sending email purposes)</i> next to them,
+        are used for reducing the queries needed for each request by taking advantage of the fact that this information
+        is already available to us (through the mobile app).</p> 
+        <p>List of API endpoints:</p>
+        <br>
         <code>
             - <span class="matte-grey">[POST] /request</span>
             <br>
             <br>
-            Returns all services in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            Creates a new appointment.<br>
+            The context in which this route is used is that
+            a <span class="highlighted">patient</span> makes an appointment request to their doctor.
+            <br>
+            The route requires a <span class="highlighted">JSON</span> POST body as follows:
+            <pre class="matte-grey-rounder">date -> the date for which the patient made a request for (ex. 2023-05-25)
+hour -> the hour of the above date (ex. 16)
+message -> the message which the patient might have added (empty string if no message)
+doctor_id -> the patient's doctor id
+patient_id -> the patient's id
+patient_name -> the patient's name <i>(for sending email purposes)</i>
+patient_surname ->the patient's surname <i>(for sending email purposes)</i>
+patient_phone_number -> the patient's phone number <i>(for sending email purposes</i>)</pre>
         </code>
         <br>
         <code>
             - <span class="matte-grey">[POST] /accept</span>
             <br>
             <br>
-            Returns all services of a doctor in <span class="highlighted">JSON</span>:
+            Accepts an existing appointment.<br>
+            The context in which this route is used is that
+            a <span class="highlighted">patient</span> doctor accepts an appointment which is not confirmed yet.
+            <br>
+            The route requires a <span class="highlighted">JSON</span> POST body as follows:
             <pre class="matte-grey-rounder">id -> Unicode id
 title -> title of service
 description -> description of service
