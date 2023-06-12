@@ -9,5 +9,5 @@ exports.show_documentation = (req, res) =>
 
 exports.show_android_documentation = (req, res) =>
 {
-    res.sendFile(path.join(__dirname, '../documentation/mobiile-documentation.html'));
+    res.sendFile(path.join(__dirname, '../documentation/mobile-documentation.html'));
 }
