@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhysioLink Android Documentation</title>
+</head>
+<style>
+    :root
+    {
+        --matte-background: rgba(50, 51, 50, 1);
+        --matte-background-transparent: rgba(50, 51, 50, 0.7);
+    }
+
+    *::selection
+    {
+        background: #595959;
+    }
+
+    html
+    {
+        color: #e9ebf0;
+        font-family: 'Manrope', sans-serif; 
+    }
+
+    body
+    {
+        background-color: #0DAB8B;
+        justify-content: center;
+        
+    }
+
+    main
+    {
+        padding-top: 6rem;
+    }
+
+    main h1
+    {
+        font-size: 1.6rem;
+    }
+
+    main ul
+    {
+        list-style: none;
+    }
+
+    #homepage
+    {
+        text-decoration: none;
+        color: white;
+        transition: 200ms color;
+    }
+
+    #homepage:hover
+    {
+        color: #0DAB8B;
+        transition: 200ms color;
+    }
+
+    main a
+    {
+        text-decoration: none;
+        color: white;
+        transition: 200ms color;
+    }
+
+    main a:hover
+    {
+        color: var(--matte-background);
+        transition: 200ms color;
+    }
+
+    #header-sticky
+    {
+        background-color: var(--matte-background-transparent);
+        justify-content: center;
+        text-align: center;
+        position: fixed;
+        min-width: 100vw;
+        top: 40px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #header-sticky h1
+    {
+        padding-left: 1rem;
+        padding-top: 1rem;
+        padding-right: 1rem;
+    }
+
+    .center-part h3
+    {
+        font-weight: normal;
+    }
+
+    .center-part
+    {
+        justify-content: center;
+        text-align: center;
+    }
+
+    li
+    {
+        user-select: none;
+        color: white;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 5px;
+        border-color: white;
+        margin-bottom: 8px;
+        transition: color 300ms;
+    }
+
+    li:hover
+    {
+        color: var(--matte-background);
+        transition: color 300ms;
+    }
+
+    hr
+    {
+        color: white;
+        border-radius: 7px;
+        border-width: 1.5px;
+        border-style: solid;
+    }
+
+    h2
+    {
+        user-select: none;
+        color: white;
+        transition: color 300ms;
+    }
+
+    h2:hover
+    {
+        color: var(--matte-background);
+        transition: color 300ms;
+    }
+
+    .h3-normal
+    {
+        font-weight: normal;
+    }
+
+    .highlighted
+    {
+        color: #fa6c41;
+        font-weight: bolder;
+    }
+
+    .matte-grey
+    {
+        background-color: var(--matte-background);
+        border-radius: 2px;   
+    }
+
+    .matte-grey-rounder
+    {
+        background-color: var(--matte-background);
+        border-radius: 5px;
+        min-width: 700px;
+        max-width: 700px;
+    }
+</style>
+<body>
+    <header id="header-sticky">
+        <h1><a href="#top" id="homepage">PhysioLink Android Documentation Reference</a></h1>
+    </header>
+    <main>
+        <hr>
+        <div class="center-part">
+            This is the official PhysioLink <span class="highlighted">Android</span> documentation.
+            <br><br>
+            In this page, you will find a summary of how the <span class="highlighted">Android</span> project is set up.
+        </div> 
+        <br>
+        <br>
+        <hr>
+        <br>
+        <div class="center-part">
+            <h2>UI structure</h2>
+            <p>The UI is structured as follows:</p>
+            <hr>
+            Activity -> Components that stay the <span class="highlighted">same</span> (bottom navigation etc.)
+        <br>
+        Fragments -> Layouts that <span class="highlighted">change</span> in that <span class="highlighted">activity</span> (home page, profile page etc.)
+        <br>
+        ViewModel -> Seperate <span class="highlighted">UI</span> logic from <span class="highlighted">Data</span> logic (Model-View-ViewModel [MVVM])
+        <br>
+        Adapter -> <span class="highlighted">List</span> handler for every fragment that has one (or more)
+            <hr>
+        </div>
+        <br>
+        <div class="center-part">
+            <h2>Design Choices</h2>
+            In order to make the code modular, the project has 3 basic activities:
+            <br>
+            <ul>
+                <li>PSFActivity: Home to all fragments that are PSF related</li>
+                <li>DoctorActivity: Home to all fragments that are Doctor related</li>
+                <li>PatientActivity: Home to all fragments that are Patient related</li>
+            </ul>
+            <br>
+            Other activities include:
+            <ul>
+                <li>MainActivity: Redirects user to their appropriate activity if they are logged in</li>
+                <li>LoginActivity: Login activity that handles the authentication with the help of auth classes</li>
+            </ul>
+        </div>
+        <br>
+        <hr>
+        <br>
+    </main>
+    </body>
+</html>
