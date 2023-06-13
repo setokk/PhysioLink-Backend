@@ -41,11 +41,6 @@
         font-size: 1.6rem;
     }
 
-    main ul
-    {
-        list-style: none;
-    }
-
     #homepage
     {
         text-decoration: none;
@@ -106,10 +101,6 @@
     {
         user-select: none;
         color: white;
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 5px;
-        border-color: white;
         margin-bottom: 8px;
         transition: color 300ms;
     }
@@ -177,40 +168,77 @@
             <br><br>
             In this page, you will find a summary of how the <span class="highlighted">Android</span> project is set up.
         </div> 
+        <hr>
         <br>
-        <br>
+        <div class="center-part">
+            <h2>Assumptions</h2>
+            <p>During development, several assumptions were made in order 
+                to speed up the development of the project.
+                These assumptions though don't impact the project's extendability or
+                ability to adapt to change in the future, since various design principles
+                were folllowed (<span class="highlighted">Message Delegation</span>,
+                <span class="highlighted">SRP</span>, <span class="highlighted">Composition</span>)
+                and many more.
+                <br>
+                <br>
+                Some of these assumptions include:
+            </p>
+        </div>
+        <ul>
+            <li>Each doctor/clinic has a standard available hours schedule.
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Weekdays -> 9:00 AM to 17:00 PM (8 hours)
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Saturday -> 9:00 AM to 13:00 PM (4 hours)
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Sunday -> No available hours (0 hours)
+            </li>
+            <li>
+                There aren't any loading screen indicators.
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;While their implementation would not be hard (wait for all API calls to finish with syncronized methods),
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;they would need to be implemented in 20 fragments, more or less.
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;The way the project is structured, we can easily do that in the future using each fragment's
+                <br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;ViewModel class, since they are responsible for data fetching
+            </li>
+        </ul>
         <hr>
         <br>
         <div class="center-part">
             <h2>UI structure</h2>
             <p>The UI is structured as follows:</p>
-            <hr>
+            <br>
             Activity -> Components that stay the <span class="highlighted">same</span> (bottom navigation etc.)
         <br>
         Fragments -> Layouts that <span class="highlighted">change</span> in that <span class="highlighted">activity</span> (home page, profile page etc.)
         <br>
         ViewModel -> Seperate <span class="highlighted">UI</span> logic from <span class="highlighted">Data</span> logic (Model-View-ViewModel [MVVM])
         <br>
-        Adapter -> <span class="highlighted">List</span> handler for every fragment that has one (or more)
+        Adapter -> <span class="highlighted">List</span> handler for every fragment that has one (or more) lists
             <hr>
         </div>
         <br>
         <div class="center-part">
             <h2>Design Choices</h2>
             In order to make the code modular, the project has 3 basic activities:
-            <br>
-            <ul>
-                <li>PSFActivity: Home to all fragments that are PSF related</li>
-                <li>DoctorActivity: Home to all fragments that are Doctor related</li>
-                <li>PatientActivity: Home to all fragments that are Patient related</li>
-            </ul>
-            <br>
-            Other activities include:
-            <ul>
-                <li>MainActivity: Redirects user to their appropriate activity if they are logged in</li>
-                <li>LoginActivity: Login activity that handles the authentication with the help of auth classes</li>
-            </ul>
         </div>
+        <br>
+        <ul>
+            <li>PSFActivity: Home to all fragments that are PSF related</li>
+            <li>DoctorActivity: Home to all fragments that are Doctor related</li>
+            <li>PatientActivity: Home to all fragments that are Patient related</li>
+        </ul>
+        <br>
+        <div class="center-part">
+            Other activities include:
+        </div>
+        <ul>
+            <li>MainActivity: Redirects user to their appropriate activity if they are logged in</li>
+            <li>LoginActivity: Login activity that handles the authentication with the help of auth classes</li>
+        </ul>
         <br>
         <hr>
         <br>
