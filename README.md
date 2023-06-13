@@ -33,7 +33,7 @@ Furthermore, extra functionalities were implemented, such as:
 	<li><b>More patient/doctor information (city, address, postal code)</b></li>
 </ul>
 
-You can find out more about the functionalities in the [API Documentation Reference](https://github.com/setokk/PhysioLink-Backend/blob/main/documentation/documentation.html)
+You can find out more about the functionalities in the [API Documentation Reference](https://github.com/setokk/PhysioLink-Backend/blob/main/documentation/mobile-documentation.html)
 
 <hr>
 
