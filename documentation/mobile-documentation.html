@@ -22,6 +22,7 @@
     {
         color: #e9ebf0;
         font-family: 'Manrope', sans-serif; 
+        font-size: 26px;
     }
 
     body
@@ -204,23 +205,49 @@
                 <br> 
                 &nbsp;&nbsp;&nbsp;&nbsp;ViewModel class, since they are responsible for data fetching
             </li>
+            <li>
+                Patients can only request one appointment at a time.
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;This restriction was implemented in order to reduce spamming from patients.
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;It was also implemented to make things simpler, as showing an appointment
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;hour available to many patients can lead to the doctor choosing one
+                <br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;and declining the others. This can also result in poor user experience.
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Once an appointment request is made, we consider it taken. Only and only when
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;the appointment is declined by the doctor, the appointment hour can be considered available again
+            </li>
+            <li>
+                Patients can only have one doctor
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;This assumption was made in regards to the initial requests of the client (PSF).
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Moreover, the development was made easier. 
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;This constraint can change to support multiple doctors, changing the patient creation system (patients would register by themselves).
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;It would also require for the database to change (adding a table has_doctor). 
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Although this change seems like the most challenging one, it can be done without
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;changing the whole system and database as a whole
+            </li>
         </ul>
         <hr>
-        <br>
         <div class="center-part">
             <h2>UI structure</h2>
             <p>The UI is structured as follows:</p>
-            <br>
-            Activity -> Components that stay the <span class="highlighted">same</span> (bottom navigation etc.)
-        <br>
-        Fragments -> Layouts that <span class="highlighted">change</span> in that <span class="highlighted">activity</span> (home page, profile page etc.)
-        <br>
-        ViewModel -> Seperate <span class="highlighted">UI</span> logic from <span class="highlighted">Data</span> logic (Model-View-ViewModel [MVVM])
-        <br>
-        Adapter -> <span class="highlighted">List</span> handler for every fragment that has one (or more) lists
-            <hr>
         </div>
-        <br>
+        <ul>
+            <li>Activity -> Components that stay the <span class="highlighted">same</span> (bottom navigation etc.)</li>
+            <li>Fragments -> Layouts that <span class="highlighted">change</span> in that <span class="highlighted">activity</span> (home page, profile page etc.)</li>
+            <li>ViewModel -> Seperate <span class="highlighted">UI</span> logic from <span class="highlighted">Data</span> logic (Model-View-ViewModel [MVVM])</li>
+            <li>Adapter -> <span class="highlighted">List</span> handler for every fragment that has one (or more) lists</li>
+        </ul>
+        <hr>
         <div class="center-part">
             <h2>Design Choices</h2>
             In order to make the code modular, the project has 3 basic activities:
@@ -236,12 +263,40 @@
             Other activities include:
         </div>
         <ul>
-            <li>MainActivity: Redirects user to their appropriate activity if they are logged in</li>
+            <li>MainActivity: Redirects the user to their appropriate activity <i>(using user.ser)</i> if they are logged in, else redirects to the LoginActivity</li>
             <li>LoginActivity: Login activity that handles the authentication with the help of auth classes</li>
         </ul>
         <br>
         <hr>
-        <br>
+        <div class="center-part">
+            <h2>Additional Functionality</h2>
+            <p>Additional functionality was added to make the project more complete.</p>
+            <p>These functionalities are:</p> 
+        </div>
+        <ul>
+            <li>Notification system: Users receive a notification when:
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Doctor: A patient requested an appointment
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Patient: Their doctor accepted their appointment
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Patient: Their doctor declined their appointment
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Patient: Their doctor made a payment for their confirmed appointment
+            </li>
+            <li>Email system: Users' emails receive messages
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Create/edit a patient and doctor with your email to see
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Check for the email in the spam folder (physiolinkservice@gmail.com)
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Sends an email when the same actions as described in the notification system happen
+            </li>
+            <li>Profile Image uploading</li>
+            <li>Personalized doctor/physiotherapist services: Ability to add services for each doctor</li>
+            <li>Updating user information (password, name, email etc.)</li>
+            <li>More patient/doctor information (city, address, postal code)</li>
+        </ul>
     </main>
     </body>
 </html>
