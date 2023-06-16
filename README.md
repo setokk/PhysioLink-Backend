@@ -8,6 +8,7 @@ PhysioLink is a mobile app that aims to facilitate the management of physiothera
 This app is written in Nodejs and specifically using the Expressjs framework. The database used is MariaDB.
 <br>
 <br>
+<img src="screenshots/android-documentation.png" />
 <img src="screenshots/api-reference.png" />
 <hr>
 
