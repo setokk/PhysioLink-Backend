@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhysioLink API Documentation</title>
-</head>
 <style>
     :root
     {
@@ -22,7 +21,7 @@
     {
         color: #e9ebf0;
         font-family: 'Manrope', sans-serif; 
-        font-size: 26px;
+        font-size: 22px;
     }
 
     body
@@ -144,10 +143,9 @@
     {
         background-color: var(--matte-background);
         border-radius: 5px;
-        min-width: 700px;
-        max-width: 700px;
     }
-</style>
+</style></head>
+
 <body>
     <header id="header-sticky">
         <h1><a href="#top" id="homepage">PhysioLink API Documentation Reference</a></h1>
@@ -186,8 +184,11 @@
             Each route is responsible for handling different kind of objects. We can have multiple functionalities
             on a single <span class="highlighted">object</span>, but not for many objects.
         </p>
-        <p>When we refer to an <span class="highlighted">object</span>, we refer to a business logic entity (ex. PSF, Doctor or Patient in our case). 
-            An object can even be something more complex rather than a single DTO (ex. Appointment). It just needs to have a certain <span class="highlighted">goal</span> (starting with the same url).
+        <p>When we refer to an <span class="highlighted">object</span>, 
+we refer to a business logic entity (ex. PSF, Doctor or Patient in our 
+case). 
+            An object can even be something more complex rather than a 
+single DTO (ex. Appointment). It just needs to have a certain <span class="highlighted">goal</span> (starting with the same url).
         </p>
         <h3 class="h3-normal">The routes currently in use in this project are:</h3>
         <pre>- <a href="#doctor-route">doctor</a> (url starts with /doctor)</pre>
@@ -227,17 +228,17 @@
              <br>
              <br>
              Expects a <span class="highlighted">JSON</span> body with the fields:
-            <pre class="matte-grey-rounder">username(50) -> the doctor's username
-password(50) -> the doctor's password
-name(50) -> the doctor's name
-surname(50) -> the doctor's surname
-email(70) -> the doctor's email
-phone_number(25) -> the doctor's phone number
-afm(9) -> the doctor's tax identification number
-city(30) -> the doctor's/physio city
-address(60) -> the doctor's/physio center address
-postal_code(30) -> the doctor's/physio city
-physio_name(40) -> physio center the doctor works at</pre> 
+            <pre class="matte-grey-rounder">username(50) -&gt; the doctor's username
+password(50) -&gt; the doctor's password
+name(50) -&gt; the doctor's name
+surname(50) -&gt; the doctor's surname
+email(70) -&gt; the doctor's email
+phone_number(25) -&gt; the doctor's phone number
+afm(9) -&gt; the doctor's tax identification number
+city(30) -&gt; the doctor's/physio city
+address(60) -&gt; the doctor's/physio center address
+postal_code(30) -&gt; the doctor's/physio city
+physio_name(40) -&gt; physio center the doctor works at</pre> 
         </code>
         <br>
         <code>
@@ -257,17 +258,17 @@ physio_name(40) -> physio center the doctor works at</pre>
 
 
 
-            <pre class="matte-grey-rounder">username(50) -> the doctor's username
-image(URL) -> the doctor's profile picture URL
-name(50) -> the doctor's name
-surname(50) -> the doctor's surname
-email(70) -> the doctor's email
-phone_number(25) -> the doctor's phone number
-afm(9) -> the doctor's tax identification number
-city(30) -> the doctor's/physio city
-address(60) -> the doctor's/physio center address
-postal_code(30) -> the doctor's/physio city
-physio_name(40) -> physio center the doctor works at</pre>
+            <pre class="matte-grey-rounder">username(50) -&gt; the doctor's username
+image(URL) -&gt; the doctor's profile picture URL
+name(50) -&gt; the doctor's name
+surname(50) -&gt; the doctor's surname
+email(70) -&gt; the doctor's email
+phone_number(25) -&gt; the doctor's phone number
+afm(9) -&gt; the doctor's tax identification number
+city(30) -&gt; the doctor's/physio city
+address(60) -&gt; the doctor's/physio center address
+postal_code(30) -&gt; the doctor's/physio city
+physio_name(40) -&gt; physio center the doctor works at</pre>
         </code>
         <br>
         <br>
@@ -291,17 +292,17 @@ physio_name(40) -> physio center the doctor works at</pre>
 
 
 
-            <pre class="matte-grey-rounder">id -> AUTO-INCREMENTED id
-image(URL) -> the doctor's profile picture URL
-name(50) -> the doctor's name
-surname(50) -> the doctor's surname 
-email(70) -> the doctor's email
-phone_number(25) -> the doctor's phone number
-afm(9) -> the doctor's tax identification number 
-city(30) -> the doctor's/physio city
-address(60) -> the doctor's/physio center address
-postal_code(30) -> the doctor's/physio city
-physio_name(40) -> physio center the doctor works at</pre>
+            <pre class="matte-grey-rounder">id -&gt; AUTO-INCREMENTED id
+image(URL) -&gt; the doctor's profile picture URL
+name(50) -&gt; the doctor's name
+surname(50) -&gt; the doctor's surname 
+email(70) -&gt; the doctor's email
+phone_number(25) -&gt; the doctor's phone number
+afm(9) -&gt; the doctor's tax identification number 
+city(30) -&gt; the doctor's/physio city
+address(60) -&gt; the doctor's/physio center address
+postal_code(30) -&gt; the doctor's/physio city
+physio_name(40) -&gt; physio center the doctor works at</pre>
         </code>
         <br>
         <br>
@@ -315,18 +316,18 @@ physio_name(40) -> physio center the doctor works at</pre>
              <br>
              <br>
              Expects a <span class="highlighted">JSON</span> body with the fields:
-            <pre class="matte-grey-rounder">username(50) -> the patient's username
-image(URL) -> the patient's profile picture URL
-password(50) -> the patient's password
-name(50) -> the patient's name
-surname(50) -> the patient's surname
-email(70) -> the patient's email
-phone_number(25) -> the patient's phone number
-amka(11) -> the patient's social security number
-city(30) -> the patient's city
-address(60) -> the patient's center address
-postal_code(30) -> the patient's city
-doc_id[INT] -> the doctor associated with this patient</pre> 
+            <pre class="matte-grey-rounder">username(50) -&gt; the patient's username
+image(URL) -&gt; the patient's profile picture URL
+password(50) -&gt; the patient's password
+name(50) -&gt; the patient's name
+surname(50) -&gt; the patient's surname
+email(70) -&gt; the patient's email
+phone_number(25) -&gt; the patient's phone number
+amka(11) -&gt; the patient's social security number
+city(30) -&gt; the patient's city
+address(60) -&gt; the patient's center address
+postal_code(30) -&gt; the patient's city
+doc_id[INT] -&gt; the doctor associated with this patient</pre> 
         </code>
         <br>
         <code>
@@ -345,17 +346,17 @@ doc_id[INT] -> the doctor associated with this patient</pre>
 
 
 
-            <pre class="matte-grey-rounder">username(50) -> the patient's username
-image(URL) -> the patient's profile picture URL
-name(50) -> the patient's name
-surname(50) -> the patient's surname
-email(70) -> the patient's email
-phone_number(25) -> the patient's phone number
-amka(11) -> the patient's social security number
-city(30) -> the patient's city
-address(60) -> the patient's center address
-postal_code(30) -> the patient's city
-doc_id[INT] -> the doctor associated with this patient</pre>
+            <pre class="matte-grey-rounder">username(50) -&gt; the patient's username
+image(URL) -&gt; the patient's profile picture URL
+name(50) -&gt; the patient's name
+surname(50) -&gt; the patient's surname
+email(70) -&gt; the patient's email
+phone_number(25) -&gt; the patient's phone number
+amka(11) -&gt; the patient's social security number
+city(30) -&gt; the patient's city
+address(60) -&gt; the patient's center address
+postal_code(30) -&gt; the patient's city
+doc_id[INT] -&gt; the doctor associated with this patient</pre>
         </code>
         <br>
         <br>
@@ -368,17 +369,17 @@ doc_id[INT] -> the doctor associated with this patient</pre>
             <br>
             <div style="opacity: 0;" id="service-route"></div>
             The endpoint returns a list of patient objects ("patients") of a doctor in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">username(50) -> the patient's username
-image(URL) -> the patient's profile picture URL
-name(50) -> the patient's name
-surname(50) -> the patient's surname
-email(70) -> the patient's email
-phone_number(25) -> the patient's phone number
-amka(11) -> the patient's social security number
-city(30) -> the patient's city
-address(60) -> the patient's center address
-postal_code(30) -> the patient's city
-doc_id[INT] -> the doctor associated with this patient
+            <pre class="matte-grey-rounder">username(50) -&gt; the patient's username
+image(URL) -&gt; the patient's profile picture URL
+name(50) -&gt; the patient's name
+surname(50) -&gt; the patient's surname
+email(70) -&gt; the patient's email
+phone_number(25) -&gt; the patient's phone number
+amka(11) -&gt; the patient's social security number
+city(30) -&gt; the patient's city
+address(60) -&gt; the patient's center address
+postal_code(30) -&gt; the patient's city
+doc_id[INT] -&gt; the doctor associated with this patient
 </pre>
         </code>
         <br>
@@ -400,10 +401,10 @@ doc_id[INT] -> the doctor associated with this patient
             <br>
             <br>
             Creates a service object in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            <pre class="matte-grey-rounder">id -&gt; Unicode id
+title -&gt; title of service
+description -&gt; description of service
+price -&gt; price of service (double)</pre>
         </code>
         <br>
         <code>
@@ -411,10 +412,10 @@ price -> price of service (double)</pre>
             <br>
             <br>
             Returns a service object in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            <pre class="matte-grey-rounder">id -&gt; Unicode id
+title -&gt; title of service
+description -&gt; description of service
+price -&gt; price of service (double)</pre>
         </code>
         <br>
         <br>
@@ -426,10 +427,10 @@ price -> price of service (double)</pre>
             <br>
             <br>
             Returns all services in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            <pre class="matte-grey-rounder">id -&gt; Unicode id
+title -&gt; title of service
+description -&gt; description of service
+price -&gt; price of service (double)</pre>
         </code>
         <br>
         <code>
@@ -443,10 +444,10 @@ price -> price of service (double)</pre>
 
 
             Returns all services of a doctor in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            <pre class="matte-grey-rounder">id -&gt; Unicode id
+title -&gt; title of service
+description -&gt; description of service
+price -&gt; price of service (double)</pre>
         </code>
         <br>
         <br>
@@ -466,14 +467,14 @@ price -> price of service (double)</pre>
             a <span class="highlighted">patient</span> makes an appointment request to their doctor.
             <br>
             The route requires a <span class="highlighted">JSON</span> POST body as follows:
-            <pre class="matte-grey-rounder">date -> the date for which the patient made a request for (ex. 2023-05-25)
-hour -> the hour of the above date (ex. 16)
-message -> the message which the patient might have added (empty string if no message)
-doctor_id -> the patient's doctor id
-patient_id -> the patient's id
-patient_name -> the patient's name <i>(for sending email purposes)</i>
-patient_surname ->the patient's surname <i>(for sending email purposes)</i>
-patient_phone_number -> the patient's phone number <i>(for sending email purposes</i>)</pre>
+            <pre class="matte-grey-rounder">date -&gt; the date for which the patient made a request for (ex. 2023-05-25)
+hour -&gt; the hour of the above date (ex. 16)
+message -&gt; the message which the patient might have added (empty string if no message)
+doctor_id -&gt; the patient's doctor id
+patient_id -&gt; the patient's id
+patient_name -&gt; the patient's name <i>(for sending email purposes)</i>
+patient_surname -&gt;the patient's surname <i>(for sending email purposes)</i>
+patient_phone_number -&gt; the patient's phone number <i>(for sending email purposes</i>)</pre>
         </code>
         <br>
         <code>
@@ -485,59 +486,173 @@ patient_phone_number -> the patient's phone number <i>(for sending email purpose
             a <span class="highlighted">patient</span> doctor accepts an appointment which is not confirmed yet.
             <br>
             The route requires a <span class="highlighted">JSON</span> POST body as follows:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            <pre class="matte-grey-rounder">appointment_id -&gt; the appointment's id
+date &lt;- the date of the appointment
+doctor_name &lt;- the doctor's name
+doctor_surname &lt;- the doctor's surname
+doctor_phone_number &lt;- the doctor's phone number</pre>
         </code>
         <br>
         <code>
             - <span class="matte-grey">[POST] /decline</span>
             <br>
+	    <p>Declines an appointment.</p> 
+            <p>The context that this route is used is when a doctor declined a confirmed or not appointment.</p>
             <br>
-            Returns all services in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            The route requires a <span class="highlighted">JSON</span> POST body as follows:
+            <pre class="matte-grey-rounder">appointment_id -&gt; the appointment's id
+date -&gt; the appointment's date
+reason &lt;- the reason that the appointment was declined. Can be an empty string, but NOT null.
+doctor_name &lt;- the doctor's name
+doctor_surname &lt;- the doctor's surname
+doctor_phone_number &lt;- the doctor's phone number</pre>
         </code>
         <br>
         <code>
             - <span class="matte-grey">[POST] /payment/accept</span>
             <br>
+	    <p>Makes the payment for an appointment.</p>
+            <p>The route is used when a doctor makes a payment for an appointment that is confirmed, but NOT completed.</p>
             <br>
-            Returns all services of a doctor in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            The route requires a <span class="highlighted">JSON</span> POST body as follows:
+            <pre class="matte-grey-rounder">appointment_id &lt;- the appointment's id
+date &lt;- the appointment's date
+service_title &lt;- the service's title (unique)</pre>
         </code>
         <br>
         <code>
-            - <span class="matte-grey">[GET] /patient/upcoming</span>
+            - <span class="matte-grey">[GET] /patient/upcoming?patient_id={long}&amp;doctor_id={long}</span>
             <br>
             <br>
-            Returns all services in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            Returns the patient's upcoming appointment details (date=today) in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">date &lt;- date of the appointment
+hour &lt;- hour of the appointment (10, 24, 13 etc.)
+city &lt;- city of the clinic/doctor
+address &lt;- address of the clinic/doctor
+postal_code &lt;- postal code of the clinic/doctor
+message &lt;- the patient's optional message when they initially made the request
+isConfirmed &lt;- 1 if the appointment is confirmed, 0 if not</pre>
         </code>
         <br>
+        <div id="appointments-route"></div>
         <code>
-            - <span class="matte-grey">[GET] /patient/previous</span>
+            - <span class="matte-grey">[GET] /patient/previous?patient_id={long}&amp;doctor_id={long}</span>
             <br>
             <br>
-            Returns all services of a doctor in <span class="highlighted">JSON</span>:
-            <pre class="matte-grey-rounder">id -> Unicode id
-title -> title of service
-description -> description of service
-price -> price of service (double)</pre>
+            Returns the latest completed appointment of the patient (payment completed) <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">appointment_id &lt;- the appointment's id
+date &lt;- the appointment's date
+hour &lt;- the appointment's hour (11, 13, 23 etc.)
+service_title &lt;- the service title
+service_description &lt;- the service's description
+service_price -&gt; price of service (double)
+message &lt;- the patient's message</pre>
         </code>
         <br>
         <br>
         <hr>
-        
+        <h3><a href="#appointments-route">Appointments Route</a> [/appointments]</h3>
+        <p>Responsible for handling appointments in lists.</p> 
+        <p>List of API endpoints:</p>
+        <br>
+        <code>
+            - <span class="matte-grey">[GET] /confirmed?doctor_id={long}&amp;date={ex. 2023-05-23}</span>
+            <br>
+            <br>
+            Gets all the doctor's confirmed appointments, given a date.
+            <br>
+            Returns a list of appointments details in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">appointment_id &lt;- the appointment's id
+date &lt;- the date of the appointment
+hour &lt;- the hour of the appointment
+image &lt;- the patient's profile picture
+patient_name &lt;- the patient's name
+patient_surname &lt;- the patient's surname
+phone_number &lt;- the patient's phone number
+amka &lt;- the patient's social security number
+message &lt;- the patient's message</pre>
+        </code>
+        <br>
+        <code>
+            - <span class="matte-grey">[GET] /confirmed/latest?doctor_id={long}&amp;date={ex. 2023-05-23}</span>
+            <br>
+            <br>
+            Gets the doctor's latest confirmed appointments (the 3 latest appointments), given a date.
+            <br>
+            Returns a list of appointments details in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">appointment_id &lt;- the appointment's id
+date &lt;- the date of the appointment
+hour &lt;- the hour of the appointment
+image &lt;- the patient's profile picture
+patient_name &lt;- the patient's name
+patient_surname &lt;- the patient's surname
+phone_number &lt;- the patient's phone number
+amka &lt;- the patient's social security number
+message &lt;- the patient's message</pre>
+        </code>
+	<br>
+                <code>
+            - <span class="matte-grey">[GET] /pending/{doctor_id={long}}</span>
+            <br>
+            <br>
+            Gets all the doctor's pending appointments.
+            <br>
+            Returns a list of appointments details in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">appointment_id &lt;- the appointment's id
+date &lt;- the date of the appointment
+hour &lt;- the hour of the appointment
+image &lt;- the patient's profile picture
+patient_name &lt;- the patient's name
+patient_surname &lt;- the patient's surname
+phone_number &lt;- the patient's phone number
+amka &lt;- the patient's social security number
+message &lt;- the patient's message</pre>
+        </code>
+        <br>
+        <div id="unavailable-hours-route"></div>
+        <code>
+            - <span class="matte-grey">[GET] /patient/history/{patient_id={long}}</span>
+            <br>
+            <br>
+            Gets all the completed appointments (those that are paid) of a patient.
+            <br>
+            Returns a list of appointments details in <span class="highlighted">JSON</span>, as well as the total payment of all the appointments:
+            <pre class="matte-grey-rounder">"appointments": [ service_title &lt;- the title of the service associated with the appointment's payment
+date &lt;- the date of the appointment
+hour &lt;- the hour of the appointment
+price &lt;- the price of the associated service
+message &lt;- the patient's message ] ,
+total_payment &lt;- the sum of all the prices of the appointments</pre>
+        </code>
+        <br>
+	<br>
+	<hr>
+	<h3><a href="#unavailable-hours-route">Unavailable Hours Route</a> [/doctor]</h3>
+        <p>Responsible for handling the appointment system by returning the unavailable hours. (optimization)</p>
+        <br>
+        <code>
+            - <span class="matte-grey">[POST] /get:</span>
+             Returns the unavailable hours for each date that has at least one appointment.
+            <br><br>
+            Response in <span class="highlighted">JSON</span>:
+            <pre class="matte-grey-rounder">"dates": 
+[
+    {
+        "date": "2023-06-23",
+        "start_hours": ["9:00", "14:00"],
+        "end_hours": ["10:00", "15:00"]
+    },
+    ...
+]</pre>
+<p>POST request body in <span class="highlighted">JSON</span>:</p>
+<pre class="matte-grey-rounder">doctor_id &lt;- the id of the doctor
+year &lt;- the year we want the unavailable hours for (ex. 2023) [int]
+month &lt;- the month we want the unavailable hours for (ex. 6 for June) [int]</pre> 
+        </code>
+<br>
+<br>
+<hr>
     </main>
-</body>
-</html>
+
+
+</body></html>
