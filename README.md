@@ -1,6 +1,8 @@
 # PhysioLink-Backend
 Backend source code for Development of Android Applications, University of Macedonia (UoM)
 <br>
+PhysioLink is a mobile app that aims to facilitate the management of physiotherapy clinics, as well as to assist patients in the appointment booking process. 
+<br>
 This app is written in Nodejs and specifically using the Expressjs framework. The database used is MariaDB.
 <br>
 <img src="screenshots/api-reference.png" />
