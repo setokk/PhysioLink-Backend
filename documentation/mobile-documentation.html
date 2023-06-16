@@ -7,158 +7,179 @@
     <link rel="stylesheet" href="style.css">
     <title>PhysioLink Android Documentation</title>
 </head>
-<!-- <style>
-    :root
-    {
-        --matte-background: rgba(50, 51, 50, 1);
-        --matte-background-transparent: rgba(50, 51, 50, 0.7);
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Manrope', sans-serif;
+}
+
+:root{
+
+    --nav-normal-header-text: 23px;
+    --nav-mid-header-text: 19px;
+
+    --nav-normal-regtext: 17px;
+    --nav-mid-regtext: 15px;
+
+    --normal-header-text: 25px;
+    --normal-regtext: 20px;
+
+    --mid-header-text: 23px;
+    --mid-regtext: 18px;
+
+    --small-header-text: 20px;
+    --small-regtext: 16px;
+}
+
+body{
+    background: linear-gradient(140deg, #0DAB8B, rgb(0, 68, 54));
+    color: white;
+}
+
+.nav-bar > h1{
+    font-size: var(--nav-normal-header-text);
+}
+
+.nav-bar > h1 > a{
+    color: rgb(0, 96, 77);
+}
+
+
+.nav-bar > h1> a:hover{
+    color: #0DAB8B;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-bar{
+    position: fixed;
+    background-color: white;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    padding: 20px 15px;
+    box-shadow: 0px 3px 20px #000000;
+}
+
+.nav-bar > ul{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    font-size: var(--nav-normal-regtext);
+    color: black;
+    transition: 400ms;
+}
+
+.nav-bar > ul > li:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    
+}
+
+.first-hr{
+    margin-top: 200px;
+}
+
+.center-part{
+    text-align: center;
+    font-size: var(--normal-header-text);
+    padding: 15px;
+}
+
+hr{
+    border-top: 5px solid white;
+}
+
+.hr-top{
+    margin-bottom: 60px;
+}
+
+.hr-bot{
+    margin: 60px 0 60px 0;
+}
+
+
+
+.first{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+.center-first{
+    width: 60%;
+}
+
+.highlighted{
+    color: #a42600;
+    font-weight: bolder;
+}
+
+.center-part-list{
+    font-size: var(--normal-regtext);
+    padding: 20px 60px;
+    
+}
+
+@media only screen and (max-width: 1100px){
+
+    .nav-bar > ul{
+        font-size: var(--nav-mid-regtext);
     }
 
-    *::selection
-    {
-        background: #595959;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .nav-bar > ul{
+        display: none;
     }
 
-    html
-    {
-        color: #e9ebf0;
-        font-family: 'Manrope', sans-serif; 
-        font-size: 26px;
-    }
-
-    body
-    {
-        background-color: #0DAB8B;
+    .nav-bar{
         justify-content: center;
-        
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .center-part{
+        font-size: var(--mid-header-text);
     }
 
-    main
-    {
-        padding-top: 6rem;
+    .center-part-list{
+        font-size: var(--mid-regtext);
+    }
+    .nav-bar > h1{
+        font-size: var(--nav-mid-header-text);
     }
 
-    main h1
-    {
-        font-size: 1.6rem;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .center-part{
+        font-size: var(--small-header-text);
     }
 
-    #homepage
-    {
-        text-decoration: none;
-        color: white;
-        transition: 200ms color;
+    .center-part-list{
+        font-size: var(--small-regtext);
     }
 
-    #homepage:hover
-    {
-        color: #0DAB8B;
-        transition: 200ms color;
-    }
-
-    main a
-    {
-        text-decoration: none;
-        color: white;
-        transition: 200ms color;
-    }
-
-    main a:hover
-    {
-        color: var(--matte-background);
-        transition: 200ms color;
-    }
-
-    #header-sticky
-    {
-        background-color: var(--matte-background-transparent);
-        justify-content: center;
-        text-align: center;
-        position: fixed;
-        min-width: 100vw;
-        top: 40px;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    #header-sticky h1
-    {
-        padding-left: 1rem;
-        padding-top: 1rem;
-        padding-right: 1rem;
-    }
-
-    .center-part h3
-    {
-        font-weight: normal;
-    }
-
-    .center-part
-    {
-        justify-content: center;
-        text-align: center;
-    }
-
-    li
-    {
-        user-select: none;
-        color: white;
-        margin-bottom: 8px;
-        transition: color 300ms;
-    }
-
-    li:hover
-    {
-        color: var(--matte-background);
-        transition: color 300ms;
-    }
-
-    hr
-    {
-        color: white;
-        border-radius: 7px;
-        border-width: 1.5px;
-        border-style: solid;
-    }
-
-    h2
-    {
-        user-select: none;
-        color: white;
-        transition: color 300ms;
-    }
-
-    h2:hover
-    {
-        color: var(--matte-background);
-        transition: color 300ms;
-    }
-
-    .h3-normal
-    {
-        font-weight: normal;
-    }
-
-    .highlighted
-    {
-        color: #fa6c41;
-        font-weight: bolder;
-    }
-
-    .matte-grey
-    {
-        background-color: var(--matte-background);
-        border-radius: 2px;   
-    }
-
-    .matte-grey-rounder
-    {
-        background-color: var(--matte-background);
-        border-radius: 5px;
-        min-width: 700px;
-        max-width: 700px;
-    }
-</style> -->
+    
+}    
+</style>
 <body>
     <header class="nav-bar" id="header-sticky">
         <h1><a href="#top" id="homepage">PhysioLink Android Documentation Reference</a></h1>
@@ -166,7 +187,7 @@
         <ul>
             <li><a href="#assu">Assumptions</a></li>
             <li><a href="#add-func">Additional Functionality</a></li>
-            <li><a href="#UI">UI structure</a></li>
+            <li><a href="#UI">UI Structure</a></li>
             <li><a href="#design">Design Choices</a></li>
         </ul>
     </header>
@@ -282,7 +303,7 @@
                 <br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;Create/edit a patient and doctor with your email to see
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;Check for the email in the spam folder (physiolinkservice@gmail.com)
+                &nbsp;&nbsp;&nbsp;&nbsp;Check for the email in the spam folder (<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c0b0a8b9b3a9afaca9aeabb3a5b2b6a9a3a580a7ada1a9aceea3afad">[email&#160;protected]</a>)
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;Sends an email when the same actions as described in the notification system happen
                 <br><br><br>
@@ -327,5 +348,5 @@
         <br>
         <hr class = "hr-bot">
     </main>
-    </body>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>
